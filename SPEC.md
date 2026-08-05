@@ -73,12 +73,13 @@
 
 ---
 
-## 5. Architecture (proposed)
+## 5. Architecture (as built)
 
 ```
 ┌─────────────────┐     ┌──────────────────┐     ┌─────────────┐
 │  Roadmap Config   │     │  Striver A2Z Data  │     │  Jira Cloud  │
-│  (YAML/JSON)       │     │  (JSON)             │     │  (via REST)  │
+│  (YAML/JSON)       │     │  (JSON, 18 steps,  │     │  (via REST)  │
+│                     │     │   474 problems)     │     │              │
 └────────┬─────────┘     └────────┬──────────┘     └──────┬──────┘
          │                        │                        │
          └────────────┬───────────┴────────────┬───────────┘
@@ -86,20 +87,36 @@
               ┌─────────────────┐               │
               │ Daily Generator  │──── writes ──▶│ (Jira subtasks)
               │  (scheduled job) │               │
-              └────────┬─────────┘               │
-                       │                          │
-                       ▼                          ▼
-              ┌─────────────────┐        ┌─────────────────┐
-              │  Local DB/store   │◀──────│  Dashboard (web)  │
-              │  (todos, progress)│        │  reads both        │
-              └─────────────────┘        └─────────────────┘
+              └─────────────────┘               │
+                                                   │
+                       ┌───────────────────────────┘
+                       ▼
+              ┌─────────────────────┐
+              │  Express API layer   │   backend/src/routes/
+              │  /api/todos/today     │   (todos, board, progress)
+              │  /api/board            │
+              │  /api/progress         │
+              └──────────┬───────────┘
+                          │ fetch, via VITE_API_URL
+                          ▼
+              ┌─────────────────────┐
+              │  React Dashboard      │   frontend/ (Vite)
+              │  Today / Board /       │
+              │  Progress tabs          │
+              └─────────────────────┘
+
                        ▲
-                       │ weekly
+                       │ weekly (Phase 4, not yet built)
               ┌─────────────────┐
               │ Rebalancing Agent │──▶ Claude API (structured prompt)
               │  (scheduled job)   │
               └─────────────────┘
 ```
+
+The dashboard never talks to Jira directly — every read goes through the
+Express API layer, which is the only place the Jira token lives. This was
+the resolution to Open Decision #2 below: not a Jira board embed, but a
+fully custom UI reading through the backend.
 
 ---
 
@@ -107,13 +124,13 @@
 
 | Layer | Suggestion | Why |
 |---|---|---|
-| Backend/API | Node.js (Express) or Python (FastAPI) | Either fits your Software Engineering track goals; pick whichever you want more reps in |
+| Backend/API | Node.js (Express) — **built** | Either fits your Software Engineering track goals; pick whichever you want more reps in |
 | Scheduled jobs | GitHub Actions (cron schedule) or a simple server-side cron | Free, versioned, visible in your GitHub activity |
-| Data store | SQLite or a free-tier Postgres (Supabase/Azure) | Small dataset, no need for anything heavy |
-| Dashboard | React + Tailwind, or Next.js if you want SSR practice | Matches frontend-design conventions, deployable free (Vercel/Azure Static Web Apps) |
-| Jira integration | Jira REST API v3, official Node/Python SDK or raw fetch | Straightforward, well-documented |
-| LLM calls | Claude API (Sonnet) | For the weekly rebalancing suggestions only |
-| Hosting | Azure (matches your cloud track from the roadmap) | Double-dips as Azure practice |
+| Data store | SQLite or a free-tier Postgres (Supabase/Azure) | Small dataset, no need for anything heavy — not yet needed, Jira + JSON files have covered it so far |
+| Dashboard | React (Vite) — **built** | Matches frontend-design conventions, deployable free (Vercel/Azure Static Web Apps) |
+| Jira integration | Jira REST API v3, raw fetch — **built** | Straightforward, well-documented |
+| LLM calls | Claude API (Sonnet) | For the weekly rebalancing suggestions only — Phase 4, not yet built |
+| Hosting | Azure (matches your cloud track from the roadmap) | Double-dips as Azure practice — not yet deployed, currently local-only |
 
 ---
 
@@ -130,14 +147,14 @@
 
 ## 8. Build Phases (matches the sequencing discussed earlier)
 
-| Phase | Scope | Target |
+| Phase | Scope | Status |
 |---|---|---|
-| **Phase 0** | Jira project setup: epics, labels, manual story creation for Q1 | Week 1, ~2-3 hrs |
-| **Phase 1** | Striver A2Z sheet as structured JSON + Jira sync script (read-only) | Week 1-2 |
-| **Phase 2** | Daily todo generator (logic only, no LLM) + writes to Jira subtasks | Week 2-3 |
-| **Phase 3** | Dashboard v1: today's todos + basic progress views, reading from local DB/Jira | Week 3-4 |
-| **Phase 4** | Weekly rebalancing agent (Claude API call, structured suggestions) | Month 2+, once you have real pace data |
-| **Phase 5** | Polish: tests, CI/CD, deploy dashboard, README + architecture diagram | Ongoing, finish by end of Month 2 |
+| **Phase 0** | Jira project setup: epics, labels, manual story creation for Q1 | ✅ Done |
+| **Phase 1** | Striver A2Z sheet as structured JSON + Jira sync script (read-only) | ✅ Done — full sheet, 18 steps / 474 problems, via Next.js flight-payload parsing |
+| **Phase 2** | Daily todo generator (logic only, no LLM) + writes to Jira subtasks | ✅ Done |
+| **Phase 3** | Dashboard v1: today's todos + basic progress views, reading from local DB/Jira | ✅ Done — Express API + React dashboard (Today / Board / Progress), reading live from Jira and the Striver JSON, no local DB needed yet |
+| **Phase 4** | Weekly rebalancing agent (Claude API call, structured suggestions) | Not started — Month 2+, once real pace data exists |
+| **Phase 5** | Polish: tests, CI/CD, deploy dashboard, README + architecture diagram | Not started |
 
 Total build time budget: **~2 weeks of focused work**, ideally absorbed into Month 1's project slot plus one recovery week — not carved out of DSA time.
 
@@ -145,16 +162,18 @@ Total build time budget: **~2 weeks of focused work**, ideally absorbed into Mon
 
 ## 9. GitHub Workflow
 
-- Repo structure: `roadmap-copilot/` with `/backend`, `/dashboard`, `/data` (Striver JSON, config), `/docs` (this spec + architecture diagram)
+- Repo structure: `roadmap-copilot/` with `/backend`, `/frontend`, `/data` (Striver JSON, config), `/docs` (this spec + architecture diagram)
 - Commit as you build each phase — real incremental history is part of the point (this is portfolio evidence of consistent work, which recruiters do look at)
-- `README.md` at repo root: what it does, architecture diagram, setup instructions, screenshot of the dashboard
-- `.env.example` committed, `.env` gitignored
-- Once Phase 5 is done, this project itself becomes citable in your resume/interviews — worth writing a short design-decisions section (why Jira as system of record, why weekly not daily rebalancing, etc.) since interviewers often probe exactly these tradeoffs
+- `README.md` at repo root: what it does, architecture diagram, setup instructions, screenshot of the dashboard (screenshot still pending)
+- `.env.example` committed for both `/backend` and `/frontend`, real `.env` gitignored in both
+- Once Phase 5 is done, this project itself becomes citable in your resume/interviews — worth writing a short design-decisions section (why Jira as system of record, why weekly not daily rebalancing, why the API layer sits between the dashboard and Jira) since interviewers often probe exactly these tradeoffs
 
 ---
 
-## 10. Open Decisions (confirm before I generate starter code)
+## 10. Open Decisions
 
-1. Backend language: Node.js or Python?
-2. Dashboard: fully custom UI, or embed Jira's board view inside a lighter custom shell?
-3. Do you already have a Jira Cloud instance + API token, or do we start from account creation?
+1. ~~Backend language: Node.js or Python?~~ → **Resolved: Node.js (Express).**
+2. ~~Dashboard: fully custom UI, or embed Jira's board view inside a lighter custom shell?~~ → **Resolved: fully custom UI (React/Vite), reading through the Express API, not embedding Jira directly.**
+3. ~~Do you already have a Jira Cloud instance + API token, or do we start from account creation?~~ → **Resolved: existing Jira Cloud instance in use since Phase 0.**
+4. Data store: still none — Jira + local JSON files (`striver-a2z.json`) have been sufficient through Phase 3. Revisit if Phase 4/5 needs to persist `WeeklyCheckIn` or `RebalanceSuggestion` history, since those don't have a natural home in Jira.
+5. Deployment target: Azure was the original suggestion (double-dips as cloud-track practice) — not yet decided or started, relevant once Phase 5 begins.
