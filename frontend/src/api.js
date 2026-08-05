@@ -17,3 +17,23 @@ export async function getProgress() {
   if (!res.ok) throw new Error('Failed to load progress');
   return res.json();
 }
+
+export async function transitionTodo(key, transitionName) {
+  const res = await fetch(`${BASE}/todos/${key}/status`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ transition: transitionName }),
+  });
+  if (!res.ok) throw new Error((await res.json()).error || 'Failed to update status');
+  return res.json();
+}
+
+export async function updateStatus(key, status) {
+  const res = await fetch(`${BASE}/todos/${key}/status`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ status }),
+  });
+  if (!res.ok) throw new Error((await res.json()).error || 'Failed to update status');
+  return res.json();
+}

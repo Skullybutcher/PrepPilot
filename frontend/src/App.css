@@ -120,3 +120,49 @@ body { margin: 0; font-family: system-ui, -apple-system, sans-serif; background:
   height: 100%;
   background: #4f46e5;
 }
+
+.view-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.refresh-btn { background: #27272a; color: #d4d4d8; border: 1px solid #3f3f46; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; }
+.refresh-btn:hover { background: #3f3f46; }
+.done-btn { background: #16a34a; color: #fff; border: none; border-radius: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer; }
+
+.board-column {
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.board-column-dragover {
+  background: #1a1a1e;
+  box-shadow: inset 0 0 0 2px #6366f1;
+}
+
+.board-column-dragover.col-to-do {
+  box-shadow: inset 0 0 0 2px #71717a;
+}
+
+.board-column-dragover.col-in-progress {
+  box-shadow: inset 0 0 0 2px #eab308;
+}
+
+.board-column-dragover.col-done {
+  box-shadow: inset 0 0 0 2px #16a34a;
+}
+
+.board-card {
+  cursor: grab;
+  transition: opacity 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.board-card:active {
+  cursor: grabbing;
+}
+
+.board-card-dragging {
+  opacity: 0.4;
+  transform: scale(0.97);
+}
+
+.board-cards {
+  min-height: 24px; /* keeps empty columns droppable, not just a thin sliver */
+}
