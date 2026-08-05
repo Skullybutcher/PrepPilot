@@ -152,7 +152,7 @@ fully custom UI reading through the backend.
 | **Phase 0** | Jira project setup: epics, labels, manual story creation for Q1 | ✅ Done |
 | **Phase 1** | Striver A2Z sheet as structured JSON + Jira sync script (read-only) | ✅ Done — full sheet, 18 steps / 474 problems, via Next.js flight-payload parsing |
 | **Phase 2** | Daily todo generator (logic only, no LLM) + writes to Jira subtasks | ✅ Done |
-| **Phase 3** | Dashboard v1: today's todos + basic progress views, reading from local DB/Jira | ✅ Done — Express API + React dashboard (Today / Board / Progress), reading live from Jira and the Striver JSON, no local DB needed yet |
+| **Phase 3** | Dashboard v1: today's todos + basic progress views, reading from local DB/Jira | ✅ Done — Express API + React dashboard (Today / Board / Progress), reading live from Jira and the Striver JSON, no local DB needed yet. Extended with a done-button and drag-and-drop status changes (both optimistic-UI, updating instantly and rolling back only on failure), 30s auto-refresh polling, and server-side auto-transition of today's tasks from "To Do" to "In Progress" on first view each day |
 | **Phase 4** | Weekly rebalancing agent (Claude API call, structured suggestions) | Not started — Month 2+, once real pace data exists |
 | **Phase 5** | Polish: tests, CI/CD, deploy dashboard, README + architecture diagram | Not started |
 
@@ -164,7 +164,11 @@ Total build time budget: **~2 weeks of focused work**, ideally absorbed into Mon
 
 - Repo structure: `roadmap-copilot/` with `/backend`, `/frontend`, `/data` (Striver JSON, config), `/docs` (this spec + architecture diagram)
 - Commit as you build each phase — real incremental history is part of the point (this is portfolio evidence of consistent work, which recruiters do look at)
-- `README.md` at repo root: what it does, architecture diagram, setup instructions, screenshot of the dashboard (screenshot still pending)
+- `README.md` at repo root: what it does, architecture diagram, setup
+  instructions. A dashboard screenshot is deliberately deferred — the UI is
+  still changing (drag-and-drop, optimistic updates, auto-transitions all
+  landed recently), so a screenshot now would just go stale. Add it once
+  Phase 5 stabilizes the UI.
 - `.env.example` committed for both `/backend` and `/frontend`, real `.env` gitignored in both
 - Once Phase 5 is done, this project itself becomes citable in your resume/interviews — worth writing a short design-decisions section (why Jira as system of record, why weekly not daily rebalancing, why the API layer sits between the dashboard and Jira) since interviewers often probe exactly these tradeoffs
 

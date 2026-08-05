@@ -77,8 +77,16 @@ hitting Jira from the browser.
 
 A Vite + React app (`/frontend`) with three views, tabbed:
 
-- **Today** — today's generated subtasks, with track and status badges
-- **Board** — a 3-column kanban (To Do / In Progress / Done) of Subtasks only
+- **Today** — today's generated subtasks, with track and status badges, a
+  done-button per task, and 30s auto-refresh polling. Tasks still sitting in
+  "To Do" auto-transition to "In Progress" the first time they're loaded
+  each day (handled server-side, so it's correct regardless of which device
+  opens the dashboard first).
+- **Board** — a 3-column kanban (To Do / In Progress / Done) of Subtasks
+  only, with native HTML5 drag-and-drop between columns. Drops update the UI
+  optimistically (the card moves instantly; the Jira update happens in the
+  background and rolls the card back if it fails), and the target column
+  highlights while dragging.
 - **Progress** — overall DSA completion %, plus a per-step breakdown across
   all 18 Striver A2Z steps
 
@@ -96,8 +104,14 @@ upstream.
 
 ## Roadmap
 
-- [ ] Mark problems/todos done directly from the dashboard (currently
-      Jira-only)
-- [ ] Auto-refresh or polling on the dashboard views
+- [x] Mark problems/todos done directly from the dashboard (done-button on
+      Today, drag-and-drop on Board — both optimistic, no wait on Jira)
+- [x] Auto-refresh or polling on the dashboard views (30s polling on Today
+      and Board)
+- [x] Today's tasks auto-transition to "In Progress" on first view each day
 - [ ] Phase 4 — weekly rebalancing suggestions via Claude API
 - [ ] Phase 5 — tests, CI, deployment
+
+Screenshots are intentionally left out of this README for now — the
+dashboard is still actively changing, so a screenshot would go stale fast.
+Worth adding once Phase 5 stabilizes the UI.
