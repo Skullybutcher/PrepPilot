@@ -13,7 +13,7 @@ Full design decisions and requirements: [`SPEC.md`](./SPEC.md)
 - [x] Phase 1 — Striver A2Z sheet as structured data
 - [x] Phase 2 — Daily todo generator (logic + Jira sync)
 - [x] Phase 3 — Dashboard (today's todos + board + progress views)
-- [ ] Phase 4 — Weekly rebalancing agent (Claude API)
+- [ ] Phase 4 — Weekly rebalancing agent (NVIDIA NIM)
 - [ ] Phase 5 — Tests/CI polish, deploy
 
 ## Quickstart

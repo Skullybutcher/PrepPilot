@@ -60,14 +60,14 @@
 - Compares actual pace per track against the pace required to hit quarterly milestones.
 - Triggers a suggestion **only if a track is off-pace for 2+ consecutive weekly check-ins**.
 - Output is a structured suggestion (what's behind, by how much, 1-2 concrete rebalancing options), not an automatic plan rewrite. You approve or reject; approved changes update the config.
-- Uses an LLM call (Claude API) with the structured pace data as context — not a free-form "how am I doing" prompt. Keep the input structured so output stays specific and actionable.
+- Uses an LLM call (NVIDIA NIM — free-tier model, TBD which one) with the structured pace data as context — not a free-form "how am I doing" prompt. Keep the input structured so output stays specific and actionable.
 
 ---
 
 ## 4. Non-Functional Requirements
 
 - **Security**: Jira API tokens and Claude API keys stored as environment variables / secrets, never committed to GitHub. Use a `.env.example` file in the repo, real `.env` gitignored.
-- **Cost**: Weekly LLM calls only (not daily) keeps API cost negligible. Daily todo generation is pure logic — no LLM call needed for that part.
+- **Cost**: Weekly LLM calls only (not daily), and using a free-tier NVIDIA NIM model rather than a paid API, keeps this at effectively zero ongoing cost. Daily todo generation is pure logic — no LLM call needed for that part.
 - **Reliability**: If the daily generator fails (Jira API down, etc.), it should fail loudly (log/notify) rather than silently produce no todos.
 - **Maintainability**: Since this is a portfolio project too, structure it as you would any placement project — clear module boundaries, tests for the core logic (todo generation, pace calculation), a real README with architecture diagram.
 
@@ -108,7 +108,7 @@
                        ▲
                        │ weekly (Phase 4, not yet built)
               ┌─────────────────┐
-              │ Rebalancing Agent │──▶ Claude API (structured prompt)
+              │ Rebalancing Agent │──▶ NVIDIA NIM (structured prompt)
               │  (scheduled job)   │
               └─────────────────┘
 ```
@@ -129,7 +129,7 @@ fully custom UI reading through the backend.
 | Data store | SQLite or a free-tier Postgres (Supabase/Azure) | Small dataset, no need for anything heavy — not yet needed, Jira + JSON files have covered it so far |
 | Dashboard | React (Vite) — **built** | Matches frontend-design conventions, deployable free (Vercel/Azure Static Web Apps) |
 | Jira integration | Jira REST API v3, raw fetch — **built** | Straightforward, well-documented |
-| LLM calls | Claude API (Sonnet) | For the weekly rebalancing suggestions only — Phase 4, not yet built |
+| LLM calls | NVIDIA NIM (free-tier model) | For the weekly rebalancing suggestions only — Phase 4, not yet built. Swapped from the originally suggested Claude API to keep this at zero cost; specific model TBD when Phase 4 starts |
 | Hosting | Azure (matches your cloud track from the roadmap) | Double-dips as Azure practice — not yet deployed, currently local-only |
 
 ---
@@ -153,7 +153,7 @@ fully custom UI reading through the backend.
 | **Phase 1** | Striver A2Z sheet as structured JSON + Jira sync script (read-only) | ✅ Done — full sheet, 18 steps / 474 problems, via Next.js flight-payload parsing |
 | **Phase 2** | Daily todo generator (logic only, no LLM) + writes to Jira subtasks | ✅ Done |
 | **Phase 3** | Dashboard v1: today's todos + basic progress views, reading from local DB/Jira | ✅ Done — Express API + React dashboard (Today / Board / Progress), reading live from Jira and the Striver JSON, no local DB needed yet. Extended with a done-button and drag-and-drop status changes (both optimistic-UI, updating instantly and rolling back only on failure), 30s auto-refresh polling, and server-side auto-transition of today's tasks from "To Do" to "In Progress" on first view each day |
-| **Phase 4** | Weekly rebalancing agent (Claude API call, structured suggestions) | Not started — Month 2+, once real pace data exists |
+| **Phase 4** | Weekly rebalancing agent (NVIDIA NIM call, structured suggestions) | Not started — Month 2+, once real pace data exists |
 | **Phase 5** | Polish: tests, CI/CD, deploy dashboard, README + architecture diagram | Not started |
 
 Total build time budget: **~2 weeks of focused work**, ideally absorbed into Month 1's project slot plus one recovery week — not carved out of DSA time.
