@@ -37,9 +37,16 @@ async function jiraRequest(path, options = {}) {
 
 /** Search issues via JQL. Used to pull current board state / velocity. */
 export async function searchIssues(jql, fields = ['summary', 'status', 'labels', 'worklog']) {
-  return jiraRequest('/search/jql', {
-    method: 'POST',
-    body: JSON.stringify({ jql, fields, maxResults: 100 }),
+  const params = new URLSearchParams();
+  params.set('jql', jql);
+
+  const normalizedFields = Array.isArray(fields) ? fields : ['summary', 'status', 'labels', 'worklog'];
+  if (normalizedFields.length > 0) {
+    params.set('fields', normalizedFields.join(','));
+  }
+
+  return jiraRequest(`/search/jql?${params.toString()}`, {
+    method: 'GET',
   });
 }
 
