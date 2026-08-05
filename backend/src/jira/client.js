@@ -8,7 +8,7 @@ function authHeader() {
   return `Basic ${token}`;
 }
 
-async function jiraRequest(path, options = {}) {
+export async function jiraRequest(path, options = {}) {
   if (!JIRA_BASE_URL || !JIRA_EMAIL || !JIRA_API_TOKEN) {
     throw new Error(
       'Missing Jira credentials. Copy .env.example to .env and fill in JIRA_BASE_URL, JIRA_EMAIL, JIRA_API_TOKEN.'
