@@ -1,0 +1,63 @@
+{
+  "startDate": "2026-08-05",
+  "recoveryWeekEveryNWeeks": 6,
+  "weeklyHourBudget": {
+    "weekday": 5,
+    "saturday": 4,
+    "sunday": 3
+  },
+  "quarters": [
+    {
+      "id": "Q1",
+      "name": "DSA Foundation + CS Fundamentals",
+      "startWeek": 1,
+      "endWeek": 13,
+      "tracks": {
+        "DSA": { "weeklyHours": 10, "focus": "Striver A2Z: Basics, Sorting, Arrays, Binary Search" },
+        "Fundamentals": { "weeklyHours": 5, "focus": "OS, DBMS core topics" },
+        "CloudCert": { "weeklyHours": 2, "focus": "Azure Fundamentals (AZ-900), GitHub Skills" },
+        "Project": { "weeklyHours": 3, "focus": "Portfolio site + CRUD REST API project" },
+        "OpenSource": { "weeklyHours": 1, "focus": "Read code/issues in 2 chosen repos, no contribution yet" }
+      }
+    },
+    {
+      "id": "Q2",
+      "name": "DSA Depth + Cloud/DevOps + Project 2",
+      "startWeek": 14,
+      "endWeek": 26,
+      "tracks": {
+        "DSA": { "weeklyHours": 10, "focus": "Striver A2Z: Trees, Graphs, DP basics, Greedy" },
+        "Fundamentals": { "weeklyHours": 4, "focus": "Computer Networks (practical), Algorithms complexity" },
+        "CloudCert": { "weeklyHours": 3, "focus": "Docker, CI/CD, one Azure associate cert" },
+        "Project": { "weeklyHours": 4, "focus": "Cloud-deployed app with CI/CD + logging" },
+        "OpenSource": { "weeklyHours": 2, "focus": "First real contribution" },
+        "InterviewPrep": { "weeklyHours": 1, "focus": "Resume v1, LinkedIn" }
+      }
+    },
+    {
+      "id": "Q3",
+      "name": "DSA Advanced + System Design + Project 3",
+      "startWeek": 27,
+      "endWeek": 39,
+      "tracks": {
+        "DSA": { "weeklyHours": 8, "focus": "Striver A2Z: Advanced DP, Graphs, Backtracking" },
+        "SystemDesign": { "weeklyHours": 3, "focus": "Load balancers, caching, medium-level design discussions" },
+        "Project": { "weeklyHours": 5, "focus": "Data/systems-oriented project 3" },
+        "OpenSource": { "weeklyHours": 2, "focus": "One more meaningful contribution" },
+        "InterviewPrep": { "weeklyHours": 2, "focus": "1-2 mocks/month" }
+      }
+    },
+    {
+      "id": "Q4",
+      "name": "Interview Sprint + Capstone",
+      "startWeek": 40,
+      "endWeek": 52,
+      "tracks": {
+        "DSA": { "weeklyHours": 6, "focus": "Maintenance + timed practice" },
+        "SystemDesign": { "weeklyHours": 4, "focus": "Mocks, 1-2/week ramping to daily" },
+        "Project": { "weeklyHours": 6, "focus": "Capstone: Gen AI/RAG or polished combination project" },
+        "InterviewPrep": { "weeklyHours": 4, "focus": "2-3 mocks/week, resume + LinkedIn final polish" }
+      }
+    }
+  ]
+}

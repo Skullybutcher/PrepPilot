@@ -1,0 +1,22 @@
+{
+  "name": "roadmap-copilot-backend",
+  "version": "0.1.0",
+  "description": "Daily todo generator + Jira sync for placement prep roadmap",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "setup:jira": "node src/scripts/setupJiraProject.js",
+    "sync:striver": "node src/scripts/syncStriverToJira.js",
+    "scrape:striver": "node src/scripts/scrapeStriverSheet.js",
+    "generate:today": "node src/scripts/generateDailyTodos.js",
+    "test": "node --test src/**/*.test.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "node-fetch": "^3.3.2",
+    "puppeteer": "^25.5.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
