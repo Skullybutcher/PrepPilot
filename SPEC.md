@@ -84,6 +84,7 @@
 
 - **Security**: Jira API tokens and Claude API keys stored as environment variables / secrets, never committed to GitHub. Use a `.env.example` file in the repo, real `.env` gitignored.
 - **Cost**: Weekly LLM calls only (not daily), and using a free-tier NVIDIA NIM model rather than a paid API, keeps this at effectively zero ongoing cost. Daily todo generation is pure logic — no LLM call needed for that part.
+- **Cost**: Weekly LLM calls only (not daily), and using a free-tier NVIDIA NIM model rather than a paid API, keeps this at effectively zero ongoing cost. Daily todo generation is pure logic — no LLM call needed for that part.
 - **Reliability**: If the daily generator fails (Jira API down, etc.), it should fail loudly (log/notify) rather than silently produce no todos.
 - **Maintainability**: Since this is a portfolio project too, structure it as you would any placement project — clear module boundaries, tests for the core logic (todo generation, pace calculation), a real README with architecture diagram.
 
@@ -145,6 +146,7 @@ fully custom UI reading through the backend.
 | Data store | SQLite or a free-tier Postgres (Supabase/Azure) | Small dataset, no need for anything heavy — not yet needed, Jira + JSON files have covered it so far |
 | Dashboard | React (Vite) — **built** | Matches frontend-design conventions, deployable free (Vercel/Azure Static Web Apps) |
 | Jira integration | Jira REST API v3, raw fetch — **built** | Straightforward, well-documented |
+| LLM calls | NVIDIA NIM (free-tier model) | For the weekly rebalancing suggestions only — Phase 4, not yet built. Swapped from the originally suggested Claude API to keep this at zero cost; specific model TBD when Phase 4 starts |
 | LLM calls | NVIDIA NIM (free-tier model) | For the weekly rebalancing suggestions only — Phase 4, not yet built. Swapped from the originally suggested Claude API to keep this at zero cost; specific model TBD when Phase 4 starts |
 | Hosting | Azure (matches your cloud track from the roadmap) | Double-dips as Azure practice — not yet deployed, currently local-only |
 
