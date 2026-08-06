@@ -5,7 +5,7 @@ const router = Router();
 
 router.get('/today', async (req, res) => {
   try {
-    const jql = `project = ${process.env.JIRA_PROJECT_KEY} AND issuetype = Subtask ORDER BY updated DESC`;
+    const jql = `project = ${process.env.JIRA_PROJECT_KEY} AND issuetype = Subtask AND (created >= startOfDay() OR status != Done) ORDER BY updated DESC`;
     const result = await searchIssues(jql, ['summary', 'status', 'labels']);
     const issues = result.issues ?? [];
 

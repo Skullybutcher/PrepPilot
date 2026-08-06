@@ -18,11 +18,23 @@ export default function TodayView() {
   }, [load]);
 
   const markDone = async (key) => {
+    const prevStatus = data.todos.find((t) => t.key === key)?.status;
+
+    // Optimistic: reflect it immediately, don't wait on the server
+    setData((prev) => ({
+      ...prev,
+      todos: prev.todos.map((t) => (t.key === key ? { ...t, status: 'Done' } : t)),
+    }));
+
     try {
       await transitionTodo(key, 'Done');
-      load(); // refresh immediately after a successful change
     } catch (err) {
       setError(err.message);
+      // roll back on failure
+      setData((prev) => ({
+        ...prev,
+        todos: prev.todos.map((t) => (t.key === key ? { ...t, status: prevStatus } : t)),
+      }));
     }
   };
 

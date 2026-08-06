@@ -58,16 +58,32 @@
 ### FR6 — Rebalancing Agent
 - Runs weekly (not daily — avoid single-bad-day panic triggers).
 - Compares actual pace per track against the pace required to hit quarterly milestones.
-- Triggers a suggestion **only if a track is off-pace for 2+ consecutive weekly check-ins**.
-- Output is a structured suggestion (what's behind, by how much, 1-2 concrete rebalancing options), not an automatic plan rewrite. You approve or reject; approved changes update the config.
-- Uses an LLM call (Claude API) with the structured pace data as context — not a free-form "how am I doing" prompt. Keep the input structured so output stays specific and actionable.
+- Triggers a suggestion if **either** of two conditions is true (combined trigger — either one alone is sufficient, they're independent signals):
+  - **Off-pace**: a track is behind the pace required to hit quarterly milestones for **2+ consecutive weekly check-ins**, based on completion rate (DSA problems / hours vs. what the plan requires at this point in the quarter).
+  - **Stale**: an individual Jira card has sat in "To Do" or "In Progress" without a status change for **2+ weeks**, regardless of whether the track it belongs to is otherwise on pace. Detected via the Jira changelog API (actual last status-transition date), not the `updated` field — `updated` changes on any edit (comment, label, description), not just status changes, so it's too noisy to use directly.
+  - These are deliberately separate checks: a track can be perfectly on-pace overall while one specific card rots for two weeks, or vice versa. Either condition alone is enough to fire the suggestion.
+- The model's input is a pre-computed, structured payload built by application code — a `WeeklyCheckIn`-shaped object with per-track pace deltas and the consecutive-behind counter, plus which stale cards (if any) triggered the check. The model never sees raw Jira data or the roadmap config directly.
+- The model's job is narrow: given that structured input, produce 1-2 concrete rebalancing **options** — not a rewritten plan, not encouragement, not an explanation of *why* the person is behind. By the time the model is called, "should we suggest something" has already been decided by the trigger logic above; the model only decides *what* the suggestion says.
+- Output is strict JSON matching `RebalanceSuggestion` (Section 7) — structured, not free text, since the dashboard renders it as a card the person approves or rejects. Not an automatic plan rewrite; approved changes update the config.
+- Uses an LLM call (NVIDIA NIM — free-tier model, TBD which one) with the structured pace data as context — not a free-form "how am I doing" prompt. Keep the input structured so output stays specific and actionable.
+
+### FR7 — Conversational Plan Builder
+- An ongoing (not one-time-onboarding) chat interface for creating or revising the roadmap: the person can dump an unstructured brain-dump of tasks, or paste in an existing roadmap they already have, and have a conversation that produces a structured `RoadmapConfig` (FR1).
+- **Lives as a "Plan" tab** in the dashboard, alongside Today/Board/Progress — not a CLI script, since conversations don't fit a CLI back-and-forth well and a CLI would lose chat history between runs. Same architecture pattern as the rest of the system: frontend never talks to the LLM directly, everything goes through the Express API layer.
+  - Backend: a `POST /api/plan/chat` endpoint that holds (or receives each turn) the conversation, calls NIM, and on confirmation writes to `roadmap.config.json`.
+- **Document ingestion — no RAG.** A roadmap document or brain-dump is realistically a few hundred to a few thousand words, which fits entirely inside a single prompt. The whole document is pasted directly into the prompt as context each turn — no chunking, embeddings, or vector DB. RAG would be actively worse here: retrieval could miss cross-references between sections of a small document, where "give the model everything" has no such failure mode. Before picking a NIM model for this, confirm its context window comfortably covers system prompt + existing roadmap doc + Striver progress summary + full conversation so far.
+- **Memory — in-session only, no cross-session memory store.**
+  - In-session: standard chat, pass the message array back each turn.
+  - Cross-session: deliberately **not** implemented. Each new plan conversation re-grounds itself from the current `roadmap.config.json` + Striver progress, rather than recalling old chat transcripts. This keeps a single system of record (the actual config file) instead of two things that could drift apart (the file, and whatever the model half-remembers). The only gap this leaves is losing an in-progress, unconfirmed conversation on a browser refresh — an acceptable v1 tradeoff, and fixable later (persist the current message array) if it ever becomes a real problem.
+- **Approve-before-write**, same principle as FR6's rebalancing agent: the bot proposes a `RoadmapConfig` diff/preview and only writes to `roadmap.config.json` on explicit confirmation. Never silently overwrites the plan.
+- Relationship to FR6: the two features are related but distinct entry points. FR6's rebalancing agent is a small, structured nudge ("here's what's behind, here are 1-2 tweak options") feeding `WeeklyCheckIn` / `RebalanceSuggestion`. FR7's chatbot is the bigger surface for either starting a plan from scratch or restructuring an existing one — a natural place to land when a rebalancing suggestion gets rejected or the person wants something more involved than a 1-2 option tweak ("open this in the plan chat instead").
 
 ---
 
 ## 4. Non-Functional Requirements
 
 - **Security**: Jira API tokens and Claude API keys stored as environment variables / secrets, never committed to GitHub. Use a `.env.example` file in the repo, real `.env` gitignored.
-- **Cost**: Weekly LLM calls only (not daily) keeps API cost negligible. Daily todo generation is pure logic — no LLM call needed for that part.
+- **Cost**: Weekly LLM calls only (not daily), and using a free-tier NVIDIA NIM model rather than a paid API, keeps this at effectively zero ongoing cost. Daily todo generation is pure logic — no LLM call needed for that part.
 - **Reliability**: If the daily generator fails (Jira API down, etc.), it should fail loudly (log/notify) rather than silently produce no todos.
 - **Maintainability**: Since this is a portfolio project too, structure it as you would any placement project — clear module boundaries, tests for the core logic (todo generation, pace calculation), a real README with architecture diagram.
 
@@ -108,7 +124,7 @@
                        ▲
                        │ weekly (Phase 4, not yet built)
               ┌─────────────────┐
-              │ Rebalancing Agent │──▶ Claude API (structured prompt)
+              │ Rebalancing Agent │──▶ NVIDIA NIM (structured prompt)
               │  (scheduled job)   │
               └─────────────────┘
 ```
@@ -129,7 +145,7 @@ fully custom UI reading through the backend.
 | Data store | SQLite or a free-tier Postgres (Supabase/Azure) | Small dataset, no need for anything heavy — not yet needed, Jira + JSON files have covered it so far |
 | Dashboard | React (Vite) — **built** | Matches frontend-design conventions, deployable free (Vercel/Azure Static Web Apps) |
 | Jira integration | Jira REST API v3, raw fetch — **built** | Straightforward, well-documented |
-| LLM calls | Claude API (Sonnet) | For the weekly rebalancing suggestions only — Phase 4, not yet built |
+| LLM calls | NVIDIA NIM (free-tier model) | For the weekly rebalancing suggestions only — Phase 4, not yet built. Swapped from the originally suggested Claude API to keep this at zero cost; specific model TBD when Phase 4 starts |
 | Hosting | Azure (matches your cloud track from the roadmap) | Double-dips as Azure practice — not yet deployed, currently local-only |
 
 ---
@@ -153,7 +169,7 @@ fully custom UI reading through the backend.
 | **Phase 1** | Striver A2Z sheet as structured JSON + Jira sync script (read-only) | ✅ Done — full sheet, 18 steps / 474 problems, via Next.js flight-payload parsing |
 | **Phase 2** | Daily todo generator (logic only, no LLM) + writes to Jira subtasks | ✅ Done |
 | **Phase 3** | Dashboard v1: today's todos + basic progress views, reading from local DB/Jira | ✅ Done — Express API + React dashboard (Today / Board / Progress), reading live from Jira and the Striver JSON, no local DB needed yet. Extended with a done-button and drag-and-drop status changes (both optimistic-UI, updating instantly and rolling back only on failure), 30s auto-refresh polling, and server-side auto-transition of today's tasks from "To Do" to "In Progress" on first view each day |
-| **Phase 4** | Weekly rebalancing agent (Claude API call, structured suggestions) | Not started — Month 2+, once real pace data exists |
+| **Phase 4** | Weekly rebalancing agent (combined off-pace/stale trigger, NVIDIA NIM call, structured suggestions per FR6) + Conversational Plan Builder chat tab (FR7) | Not started — Month 2+, once real pace data exists. FR7 designed (trigger logic, chat architecture, no-RAG/no-cross-session-memory decisions); not yet built. |
 | **Phase 5** | Polish: tests, CI/CD, deploy dashboard, README + architecture diagram | Not started |
 
 Total build time budget: **~2 weeks of focused work**, ideally absorbed into Month 1's project slot plus one recovery week — not carved out of DSA time.

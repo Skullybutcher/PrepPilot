@@ -13,7 +13,7 @@ Full design decisions and requirements: [`SPEC.md`](./SPEC.md)
 - [x] Phase 1 — Striver A2Z sheet as structured data
 - [x] Phase 2 — Daily todo generator (logic + Jira sync)
 - [x] Phase 3 — Dashboard (today's todos + board + progress views)
-- [ ] Phase 4 — Weekly rebalancing agent (Claude API)
+- [ ] Phase 4 — Weekly rebalancing agent (NVIDIA NIM) + Conversational Plan Builder chat tab
 - [ ] Phase 5 — Tests/CI polish, deploy
 
 ## Quickstart
@@ -109,7 +109,14 @@ upstream.
 - [x] Auto-refresh or polling on the dashboard views (30s polling on Today
       and Board)
 - [x] Today's tasks auto-transition to "In Progress" on first view each day
-- [ ] Phase 4 — weekly rebalancing suggestions via Claude API
+- [ ] Phase 4 — weekly rebalancing suggestions via NVIDIA NIM, triggered by
+      either an off-pace track (2+ consecutive weekly check-ins) or a stale
+      card (2+ weeks unchanged, detected via Jira's changelog API)
+- [ ] Phase 4 — Conversational Plan Builder: a "Plan" chat tab for creating
+      or revising the roadmap from a brain-dump or an existing plan, backed
+      by `POST /api/plan/chat`, no RAG, no cross-session memory (re-grounds
+      from the current `roadmap.config.json` each conversation), proposes a
+      diff you approve before it writes
 - [ ] Phase 5 — tests, CI, deployment
 
 Screenshots are intentionally left out of this README for now — the
