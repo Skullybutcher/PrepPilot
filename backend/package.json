@@ -11,6 +11,7 @@
     "sync:striver": "node src/scripts/syncStriverToJira.js",
     "scrape:striver": "node src/scripts/scrapeStriverSheet.js",
     "generate:today": "node src/scripts/generateDailyTodos.js",
+    "check:weekly": "node src/scripts/weeklyRebalanceCheck.js",
     "test": "node --test src/**/*.test.js"
   },
   "dependencies": {

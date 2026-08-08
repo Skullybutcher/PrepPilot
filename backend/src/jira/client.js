@@ -97,4 +97,13 @@ export async function getWorklogs(issueKey) {
   return jiraRequest(`/issue/${issueKey}/worklog`);
 }
 
+/**
+ * Fetch an issue's changelog (used to find its last real status-transition
+ * date, for staleness checks — the `updated` field on an issue changes on
+ * any edit, not just a status change, so it's not reliable for this).
+ */
+export async function getIssueChangelog(issueKey) {
+  return jiraRequest(`/issue/${issueKey}/changelog`);
+}
+
 export const projectKey = JIRA_PROJECT_KEY;
