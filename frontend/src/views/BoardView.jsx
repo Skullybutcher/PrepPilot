@@ -58,13 +58,12 @@ export default function BoardView() {
     }
   };
 
-  if (loading) return <p className="status">Loading board...</p>;
+  if (loading) return <div className="skeleton"></div>;
   if (error) return <p className="status error">Error: {error}</p>;
 
   return (
     <div>
       <div className="view-header">
-        <h3></h3>
         <button className="refresh-btn" onClick={load}>Refresh</button>
       </div>
       <div className="board">

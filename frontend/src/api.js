@@ -37,3 +37,23 @@ export async function updateStatus(key, status) {
   if (!res.ok) throw new Error((await res.json()).error || 'Failed to update status');
   return res.json();
 }
+
+export const planChat = (messages) =>
+  fetch(`${BASE}/plan/chat`, { 
+    method: 'POST', 
+    headers: { 'Content-Type': 'application/json' }, 
+    body: JSON.stringify({ messages }) 
+  }).then(r => r.ok ? r.json() : r.json().then(e => Promise.reject(e)));
+
+export const planApply = (config) =>
+  fetch(`${BASE}/plan/apply`, { 
+    method: 'POST', 
+    headers: { 'Content-Type': 'application/json' }, 
+    body: JSON.stringify({ config }) 
+  }).then(r => r.ok ? r.json() : r.json().then(e => Promise.reject(e)));
+
+export const getLatestRebalance = () => 
+  fetch(`${BASE}/rebalance/latest`).then(r => r.ok ? r.json() : null);
+
+export const approveRebalance = () => 
+  fetch(`${BASE}/rebalance/approve`, { method: 'POST' }).then(r => r.ok ? r.json() : null);

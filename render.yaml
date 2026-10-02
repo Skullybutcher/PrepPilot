@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: roadmap-copilot-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 4000
+      - key: NIM_REBALANCE_MODEL
+        value: nvidia/nemotron-3.5-lightning-30b-a3b
+      - key: NIM_REBALANCE_MODEL_FALLBACK
+        value: deepseek-ai/deepseek-v4.1-flash
+      - key: NIM_CHAT_MODEL
+        value: nvidia/nemotron-3-ultra-550b-a55b
+      - key: NIM_CHAT_MODEL_FALLBACK
+        value: nvidia/nemotron-3-super-120b-a12b
+      - key: JIRA_BASE_URL
+        sync: false
+      - key: JIRA_EMAIL
+        sync: false
+      - key: JIRA_API_TOKEN
+        sync: false
+      - key: JIRA_PROJECT_KEY
+        sync: false
+      - key: NIM_API_KEY
+        sync: false

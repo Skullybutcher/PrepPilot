@@ -1,6 +1,7 @@
 // frontend/src/views/TodayView.jsx
 import { useEffect, useState, useCallback } from 'react';
 import { getTodayTodos, transitionTodo } from '../api';
+import RebalanceCard from './RebalanceCard';
 
 export default function TodayView() {
   const [data, setData] = useState(null);
@@ -38,7 +39,7 @@ export default function TodayView() {
     }
   };
 
-  if (loading) return <p className="status">Loading today's tasks...</p>;
+  if (loading) return <div className="skeleton"></div>;
   if (error) return <p className="status error">Error: {error}</p>;
   if (!data.todos.length) return <p className="status">No todos for {data.date} yet.</p>;
 
@@ -48,6 +49,7 @@ export default function TodayView() {
         <h2>Today — {data.date}</h2>
         <button className="refresh-btn" onClick={load}>Refresh</button>
       </div>
+      <RebalanceCard />
       <ul className="todo-list">
         {data.todos.map((todo) => (
           <li key={todo.key} className="todo-item">

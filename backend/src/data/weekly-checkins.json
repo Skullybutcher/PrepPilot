@@ -1,1 +1,4677 @@
-[]
+[
+  {
+    "weekNumber": 1,
+    "date": "2026-08-08",
+    "tracks": {
+      "DSA": {
+        "logged": 0,
+        "target": 10,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 1
+      },
+      "Fundamentals": {
+        "logged": 0,
+        "target": 5,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 1
+      },
+      "CloudCert": {
+        "logged": 0,
+        "target": 2,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 1
+      },
+      "Project": {
+        "logged": 0,
+        "target": 3,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 1
+      },
+      "OpenSource": {
+        "logged": 0,
+        "target": 1,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 1
+      }
+    },
+    "staleCards": [],
+    "triggered": false,
+    "triggers": []
+  },
+  {
+    "weekNumber": 1,
+    "date": "2026-08-08",
+    "tracks": {
+      "DSA": {
+        "logged": 0,
+        "target": 10,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 2
+      },
+      "Fundamentals": {
+        "logged": 0,
+        "target": 5,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 2
+      },
+      "CloudCert": {
+        "logged": 0,
+        "target": 2,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 2
+      },
+      "Project": {
+        "logged": 0,
+        "target": 3,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 2
+      },
+      "OpenSource": {
+        "logged": 0,
+        "target": 1,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 2
+      }
+    },
+    "staleCards": [
+      {
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "status": "In Progress",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T23:56:44.413+0530",
+        "daysStale": 2
+      },
+      {
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "status": "In Progress",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T23:57:05.129+0530",
+        "daysStale": 2
+      },
+      {
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:25.454+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:24.494+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:23.444+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:22.221+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:20.101+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:18.840+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:17.669+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:16.368+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:15.285+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:13.413+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:12.378+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:11.337+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:10.149+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:09.105+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:07.883+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:06.015+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:04.867+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:03.626+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:02.580+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:01.356+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-12",
+        "summary": "dsa",
+        "status": "To Do",
+        "track": null,
+        "lastTransitionDate": "2026-08-05T17:52:24.857+0530",
+        "daysStale": 3
+      }
+    ],
+    "triggered": true,
+    "triggers": [
+      {
+        "reason": "off-pace",
+        "track": "DSA",
+        "consecutiveBehind": 2,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Fundamentals",
+        "consecutiveBehind": 2,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "CloudCert",
+        "consecutiveBehind": 2,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Project",
+        "consecutiveBehind": 2,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "OpenSource",
+        "consecutiveBehind": 2,
+        "ratio": 0
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "daysStale": 2
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "daysStale": 2
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": null,
+        "key": "KAN-12",
+        "summary": "dsa",
+        "daysStale": 3
+      }
+    ]
+  },
+  {
+    "weekNumber": 1,
+    "date": "2026-08-08",
+    "tracks": {
+      "DSA": {
+        "logged": 0,
+        "target": 10,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 3
+      },
+      "Fundamentals": {
+        "logged": 0,
+        "target": 5,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 3
+      },
+      "CloudCert": {
+        "logged": 0,
+        "target": 2,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 3
+      },
+      "Project": {
+        "logged": 0,
+        "target": 3,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 3
+      },
+      "OpenSource": {
+        "logged": 0,
+        "target": 1,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 3
+      }
+    },
+    "staleCards": [
+      {
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "status": "In Progress",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T23:56:44.413+0530",
+        "daysStale": 2
+      },
+      {
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "status": "In Progress",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T23:57:05.129+0530",
+        "daysStale": 2
+      },
+      {
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:25.454+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:24.494+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:23.444+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:22.221+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:20.101+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:18.840+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:17.669+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:16.368+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:15.285+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:13.413+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:12.378+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:11.337+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:10.149+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:09.105+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:07.883+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:06.015+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:04.867+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:03.626+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:02.580+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:01.356+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-12",
+        "summary": "dsa",
+        "status": "To Do",
+        "track": null,
+        "lastTransitionDate": "2026-08-05T17:52:24.857+0530",
+        "daysStale": 3
+      }
+    ],
+    "triggered": true,
+    "triggers": [
+      {
+        "reason": "off-pace",
+        "track": "DSA",
+        "consecutiveBehind": 3,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Fundamentals",
+        "consecutiveBehind": 3,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "CloudCert",
+        "consecutiveBehind": 3,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Project",
+        "consecutiveBehind": 3,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "OpenSource",
+        "consecutiveBehind": 3,
+        "ratio": 0
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "daysStale": 2
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "daysStale": 2
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": null,
+        "key": "KAN-12",
+        "summary": "dsa",
+        "daysStale": 3
+      }
+    ]
+  },
+  {
+    "weekNumber": 1,
+    "date": "2026-08-08",
+    "tracks": {
+      "DSA": {
+        "logged": 0,
+        "target": 10,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 4
+      },
+      "Fundamentals": {
+        "logged": 0,
+        "target": 5,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 4
+      },
+      "CloudCert": {
+        "logged": 0,
+        "target": 2,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 4
+      },
+      "Project": {
+        "logged": 0,
+        "target": 3,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 4
+      },
+      "OpenSource": {
+        "logged": 0,
+        "target": 1,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 4
+      }
+    },
+    "staleCards": [
+      {
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "status": "In Progress",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T23:56:44.413+0530",
+        "daysStale": 2
+      },
+      {
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "status": "In Progress",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T23:57:05.129+0530",
+        "daysStale": 2
+      },
+      {
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:25.454+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:24.494+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:23.444+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:22.221+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:20.101+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:18.840+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:17.669+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:16.368+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:15.285+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:13.413+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:12.378+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:11.337+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:10.149+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:09.105+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:07.883+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:06.015+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:04.867+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:03.626+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:02.580+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:01.356+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-12",
+        "summary": "dsa",
+        "status": "To Do",
+        "track": null,
+        "lastTransitionDate": "2026-08-05T17:52:24.857+0530",
+        "daysStale": 3
+      }
+    ],
+    "triggered": true,
+    "triggers": [
+      {
+        "reason": "off-pace",
+        "track": "DSA",
+        "consecutiveBehind": 4,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Fundamentals",
+        "consecutiveBehind": 4,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "CloudCert",
+        "consecutiveBehind": 4,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Project",
+        "consecutiveBehind": 4,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "OpenSource",
+        "consecutiveBehind": 4,
+        "ratio": 0
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "daysStale": 2
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "daysStale": 2
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": null,
+        "key": "KAN-12",
+        "summary": "dsa",
+        "daysStale": 3
+      }
+    ]
+  },
+  {
+    "weekNumber": 1,
+    "date": "2026-08-08",
+    "tracks": {
+      "DSA": {
+        "logged": 0,
+        "target": 10,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 5
+      },
+      "Fundamentals": {
+        "logged": 0,
+        "target": 5,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 5
+      },
+      "CloudCert": {
+        "logged": 0,
+        "target": 2,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 5
+      },
+      "Project": {
+        "logged": 0,
+        "target": 3,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 5
+      },
+      "OpenSource": {
+        "logged": 0,
+        "target": 1,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 5
+      }
+    },
+    "staleCards": [
+      {
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "status": "In Progress",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T23:56:44.413+0530",
+        "daysStale": 2
+      },
+      {
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "status": "In Progress",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T23:57:05.129+0530",
+        "daysStale": 2
+      },
+      {
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:25.454+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:24.494+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:23.444+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:22.221+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:20.101+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:18.840+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:17.669+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:16.368+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:15.285+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:13.413+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:12.378+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:11.337+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:10.149+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:09.105+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:07.883+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:06.015+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:04.867+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:03.626+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:02.580+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:01.356+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-12",
+        "summary": "dsa",
+        "status": "To Do",
+        "track": null,
+        "lastTransitionDate": "2026-08-05T17:52:24.857+0530",
+        "daysStale": 3
+      }
+    ],
+    "triggered": true,
+    "triggers": [
+      {
+        "reason": "off-pace",
+        "track": "DSA",
+        "consecutiveBehind": 5,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Fundamentals",
+        "consecutiveBehind": 5,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "CloudCert",
+        "consecutiveBehind": 5,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Project",
+        "consecutiveBehind": 5,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "OpenSource",
+        "consecutiveBehind": 5,
+        "ratio": 0
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "daysStale": 2
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "daysStale": 2
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": null,
+        "key": "KAN-12",
+        "summary": "dsa",
+        "daysStale": 3
+      }
+    ]
+  },
+  {
+    "weekNumber": 1,
+    "date": "2026-08-08",
+    "tracks": {
+      "DSA": {
+        "logged": 0,
+        "target": 10,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 6
+      },
+      "Fundamentals": {
+        "logged": 0,
+        "target": 5,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 6
+      },
+      "CloudCert": {
+        "logged": 0,
+        "target": 2,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 6
+      },
+      "Project": {
+        "logged": 0,
+        "target": 3,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 6
+      },
+      "OpenSource": {
+        "logged": 0,
+        "target": 1,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 6
+      }
+    },
+    "staleCards": [
+      {
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "status": "In Progress",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T23:56:44.413+0530",
+        "daysStale": 2
+      },
+      {
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "status": "In Progress",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T23:57:05.129+0530",
+        "daysStale": 2
+      },
+      {
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:25.454+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:24.494+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:23.444+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:22.221+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:20.101+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:18.840+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:17.669+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:16.368+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:15.285+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:13.413+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:12.378+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:11.337+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:10.149+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:09.105+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:07.883+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:06.015+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:04.867+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:03.626+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:02.580+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:01.356+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-12",
+        "summary": "dsa",
+        "status": "To Do",
+        "track": null,
+        "lastTransitionDate": "2026-08-05T17:52:24.857+0530",
+        "daysStale": 3
+      }
+    ],
+    "triggered": true,
+    "triggers": [
+      {
+        "reason": "off-pace",
+        "track": "DSA",
+        "consecutiveBehind": 6,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Fundamentals",
+        "consecutiveBehind": 6,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "CloudCert",
+        "consecutiveBehind": 6,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Project",
+        "consecutiveBehind": 6,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "OpenSource",
+        "consecutiveBehind": 6,
+        "ratio": 0
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "daysStale": 2
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "daysStale": 2
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": null,
+        "key": "KAN-12",
+        "summary": "dsa",
+        "daysStale": 3
+      }
+    ]
+  },
+  {
+    "weekNumber": 1,
+    "date": "2026-08-08",
+    "tracks": {
+      "DSA": {
+        "logged": 0,
+        "target": 10,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 7
+      },
+      "Fundamentals": {
+        "logged": 0,
+        "target": 5,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 7
+      },
+      "CloudCert": {
+        "logged": 0,
+        "target": 2,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 7
+      },
+      "Project": {
+        "logged": 0,
+        "target": 3,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 7
+      },
+      "OpenSource": {
+        "logged": 0,
+        "target": 1,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 7
+      }
+    },
+    "staleCards": [
+      {
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "status": "In Progress",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T23:56:44.413+0530",
+        "daysStale": 2
+      },
+      {
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "status": "In Progress",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T23:57:05.129+0530",
+        "daysStale": 2
+      },
+      {
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:25.454+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:24.494+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:23.444+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:22.221+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:20.101+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:18.840+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:17.669+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:16.368+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:15.285+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:13.413+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:12.378+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:11.337+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:10.149+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:09.105+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:07.883+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:06.015+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:04.867+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:03.626+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:02.580+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:01.356+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-12",
+        "summary": "dsa",
+        "status": "To Do",
+        "track": null,
+        "lastTransitionDate": "2026-08-05T17:52:24.857+0530",
+        "daysStale": 3
+      }
+    ],
+    "triggered": true,
+    "triggers": [
+      {
+        "reason": "off-pace",
+        "track": "DSA",
+        "consecutiveBehind": 7,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Fundamentals",
+        "consecutiveBehind": 7,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "CloudCert",
+        "consecutiveBehind": 7,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Project",
+        "consecutiveBehind": 7,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "OpenSource",
+        "consecutiveBehind": 7,
+        "ratio": 0
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "daysStale": 2
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "daysStale": 2
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": null,
+        "key": "KAN-12",
+        "summary": "dsa",
+        "daysStale": 3
+      }
+    ]
+  },
+  {
+    "weekNumber": 1,
+    "date": "2026-08-08",
+    "tracks": {
+      "DSA": {
+        "logged": 0,
+        "target": 10,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 8
+      },
+      "Fundamentals": {
+        "logged": 0,
+        "target": 5,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 8
+      },
+      "CloudCert": {
+        "logged": 0,
+        "target": 2,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 8
+      },
+      "Project": {
+        "logged": 0,
+        "target": 3,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 8
+      },
+      "OpenSource": {
+        "logged": 0,
+        "target": 1,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 8
+      }
+    },
+    "staleCards": [
+      {
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "status": "In Progress",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T23:56:44.413+0530",
+        "daysStale": 2
+      },
+      {
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "status": "In Progress",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T23:57:05.129+0530",
+        "daysStale": 2
+      },
+      {
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:25.454+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:24.494+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:23.444+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:22.221+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:20.101+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:18.840+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:17.669+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:16.368+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:15.285+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:13.413+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:12.378+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:11.337+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:10.149+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:09.105+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:07.883+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:06.015+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:04.867+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:03.626+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:02.580+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:01.356+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-12",
+        "summary": "dsa",
+        "status": "To Do",
+        "track": null,
+        "lastTransitionDate": "2026-08-05T17:52:24.857+0530",
+        "daysStale": 3
+      }
+    ],
+    "triggered": true,
+    "triggers": [
+      {
+        "reason": "off-pace",
+        "track": "DSA",
+        "consecutiveBehind": 8,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Fundamentals",
+        "consecutiveBehind": 8,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "CloudCert",
+        "consecutiveBehind": 8,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Project",
+        "consecutiveBehind": 8,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "OpenSource",
+        "consecutiveBehind": 8,
+        "ratio": 0
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "daysStale": 2
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "daysStale": 2
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": null,
+        "key": "KAN-12",
+        "summary": "dsa",
+        "daysStale": 3
+      }
+    ]
+  },
+  {
+    "weekNumber": 1,
+    "date": "2026-08-08",
+    "tracks": {
+      "DSA": {
+        "logged": 0,
+        "target": 10,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 9
+      },
+      "Fundamentals": {
+        "logged": 0,
+        "target": 5,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 9
+      },
+      "CloudCert": {
+        "logged": 0,
+        "target": 2,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 9
+      },
+      "Project": {
+        "logged": 0,
+        "target": 3,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 9
+      },
+      "OpenSource": {
+        "logged": 0,
+        "target": 1,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 9
+      }
+    },
+    "staleCards": [
+      {
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "status": "In Progress",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T23:56:44.413+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "status": "In Progress",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T23:57:05.129+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:25.454+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:24.494+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:23.444+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:22.221+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:20.101+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:18.840+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:17.669+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:16.368+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:15.285+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:13.413+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:12.378+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:11.337+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:10.149+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:09.105+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:07.883+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:06.015+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:04.867+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:03.626+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:02.580+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:01.356+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-12",
+        "summary": "dsa",
+        "status": "To Do",
+        "track": null,
+        "lastTransitionDate": "2026-08-05T17:52:24.857+0530",
+        "daysStale": 3
+      }
+    ],
+    "triggered": true,
+    "triggers": [
+      {
+        "reason": "off-pace",
+        "track": "DSA",
+        "consecutiveBehind": 9,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Fundamentals",
+        "consecutiveBehind": 9,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "CloudCert",
+        "consecutiveBehind": 9,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Project",
+        "consecutiveBehind": 9,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "OpenSource",
+        "consecutiveBehind": 9,
+        "ratio": 0
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": null,
+        "key": "KAN-12",
+        "summary": "dsa",
+        "daysStale": 3
+      }
+    ]
+  },
+  {
+    "weekNumber": 1,
+    "date": "2026-08-08",
+    "tracks": {
+      "DSA": {
+        "logged": 0,
+        "target": 10,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 10
+      },
+      "Fundamentals": {
+        "logged": 0,
+        "target": 5,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 10
+      },
+      "CloudCert": {
+        "logged": 0,
+        "target": 2,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 10
+      },
+      "Project": {
+        "logged": 0,
+        "target": 3,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 10
+      },
+      "OpenSource": {
+        "logged": 0,
+        "target": 1,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 10
+      }
+    },
+    "staleCards": [
+      {
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "status": "In Progress",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T23:56:44.413+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "status": "In Progress",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T23:57:05.129+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:25.454+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:24.494+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:23.444+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:22.221+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:20.101+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:18.840+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:17.669+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:16.368+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:15.285+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:13.413+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:12.378+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:11.337+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:10.149+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:09.105+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:07.883+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:06.015+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:04.867+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:03.626+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:02.580+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:01.356+0530",
+        "daysStale": 3
+      },
+      {
+        "key": "KAN-12",
+        "summary": "dsa",
+        "status": "To Do",
+        "track": null,
+        "lastTransitionDate": "2026-08-05T17:52:24.857+0530",
+        "daysStale": 3
+      }
+    ],
+    "triggered": true,
+    "triggers": [
+      {
+        "reason": "off-pace",
+        "track": "DSA",
+        "consecutiveBehind": 10,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Fundamentals",
+        "consecutiveBehind": 10,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "CloudCert",
+        "consecutiveBehind": 10,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Project",
+        "consecutiveBehind": 10,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "OpenSource",
+        "consecutiveBehind": 10,
+        "ratio": 0
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "daysStale": 3
+      },
+      {
+        "reason": "stale",
+        "track": null,
+        "key": "KAN-12",
+        "summary": "dsa",
+        "daysStale": 3
+      }
+    ]
+  },
+  {
+    "weekNumber": 1,
+    "date": "2026-08-11",
+    "tracks": {
+      "DSA": {
+        "logged": 0,
+        "target": 10,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 11
+      },
+      "Fundamentals": {
+        "logged": 0,
+        "target": 5,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 11
+      },
+      "CloudCert": {
+        "logged": 0,
+        "target": 2,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 11
+      },
+      "Project": {
+        "logged": 0,
+        "target": 3,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 11
+      },
+      "OpenSource": {
+        "logged": 0,
+        "target": 1,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 11
+      }
+    },
+    "staleCards": [
+      {
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "status": "In Progress",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T23:56:44.413+0530",
+        "daysStale": 5
+      },
+      {
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "status": "In Progress",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T23:57:05.129+0530",
+        "daysStale": 5
+      },
+      {
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:25.454+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:24.494+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:23.444+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:22.221+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:20.101+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:18.840+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:17.669+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:16.368+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:15.285+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:13.413+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:12.378+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:11.337+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:10.149+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:09.105+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:07.883+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:06.015+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:04.867+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:03.626+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:02.580+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:01.356+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-12",
+        "summary": "dsa",
+        "status": "To Do",
+        "track": null,
+        "lastTransitionDate": "2026-08-05T17:52:24.857+0530",
+        "daysStale": 6
+      }
+    ],
+    "triggered": true,
+    "triggers": [
+      {
+        "reason": "off-pace",
+        "track": "DSA",
+        "consecutiveBehind": 11,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Fundamentals",
+        "consecutiveBehind": 11,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "CloudCert",
+        "consecutiveBehind": 11,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Project",
+        "consecutiveBehind": 11,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "OpenSource",
+        "consecutiveBehind": 11,
+        "ratio": 0
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "daysStale": 5
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "daysStale": 5
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": null,
+        "key": "KAN-12",
+        "summary": "dsa",
+        "daysStale": 6
+      }
+    ]
+  },
+  {
+    "weekNumber": 1,
+    "date": "2026-08-11",
+    "tracks": {
+      "DSA": {
+        "logged": 0,
+        "target": 10,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 12
+      },
+      "Fundamentals": {
+        "logged": 0,
+        "target": 5,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 12
+      },
+      "CloudCert": {
+        "logged": 0,
+        "target": 2,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 12
+      },
+      "Project": {
+        "logged": 0,
+        "target": 3,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 12
+      },
+      "OpenSource": {
+        "logged": 0,
+        "target": 1,
+        "ratio": 0,
+        "status": "behind",
+        "consecutiveBehind": 12
+      }
+    },
+    "staleCards": [
+      {
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "status": "In Progress",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T23:56:44.413+0530",
+        "daysStale": 5
+      },
+      {
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "status": "In Progress",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T23:57:05.129+0530",
+        "daysStale": 5
+      },
+      {
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:25.454+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:24.494+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:23.444+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:22.221+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:20.101+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:18.840+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:17.669+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "status": "To Do",
+        "track": "SystemDesign",
+        "lastTransitionDate": "2026-08-05T18:15:16.368+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:15.285+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "status": "To Do",
+        "track": "InterviewPrep",
+        "lastTransitionDate": "2026-08-05T18:15:13.413+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:12.378+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:11.337+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:10.149+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:09.105+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:07.883+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "status": "To Do",
+        "track": "OpenSource",
+        "lastTransitionDate": "2026-08-05T18:15:06.015+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "status": "To Do",
+        "track": "Project",
+        "lastTransitionDate": "2026-08-05T18:15:04.867+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "status": "To Do",
+        "track": "CloudCert",
+        "lastTransitionDate": "2026-08-05T18:15:03.626+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "status": "To Do",
+        "track": "Fundamentals",
+        "lastTransitionDate": "2026-08-05T18:15:02.580+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "status": "To Do",
+        "track": "DSA",
+        "lastTransitionDate": "2026-08-05T18:15:01.356+0530",
+        "daysStale": 6
+      },
+      {
+        "key": "KAN-12",
+        "summary": "dsa",
+        "status": "To Do",
+        "track": null,
+        "lastTransitionDate": "2026-08-05T17:52:24.857+0530",
+        "daysStale": 6
+      }
+    ],
+    "triggered": true,
+    "triggers": [
+      {
+        "reason": "off-pace",
+        "track": "DSA",
+        "consecutiveBehind": 12,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Fundamentals",
+        "consecutiveBehind": 12,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "CloudCert",
+        "consecutiveBehind": 12,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "Project",
+        "consecutiveBehind": 12,
+        "ratio": 0
+      },
+      {
+        "reason": "off-pace",
+        "track": "OpenSource",
+        "consecutiveBehind": 12,
+        "ratio": 0
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-38",
+        "summary": "[2026-08-05] Fundamentals: OS, DBMS core topics (1 hr)",
+        "daysStale": 5
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-37",
+        "summary": "[2026-08-05] DSA: Learn the Basics > User Input / Output; Learn the Basics > Data Types",
+        "daysStale": 5
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-36",
+        "summary": "InterviewPrep — Q4",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-35",
+        "summary": "Project — Q4",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-34",
+        "summary": "SystemDesign — Q4",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-33",
+        "summary": "DSA — Q4",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-31",
+        "summary": "InterviewPrep — Q3",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-30",
+        "summary": "OpenSource — Q3",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-29",
+        "summary": "Project — Q3",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "SystemDesign",
+        "key": "KAN-28",
+        "summary": "SystemDesign — Q3",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-27",
+        "summary": "DSA — Q3",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "InterviewPrep",
+        "key": "KAN-25",
+        "summary": "InterviewPrep — Q2",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-24",
+        "summary": "OpenSource — Q2",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-23",
+        "summary": "Project — Q2",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-22",
+        "summary": "CloudCert — Q2",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-21",
+        "summary": "Fundamentals — Q2",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-20",
+        "summary": "DSA — Q2",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "OpenSource",
+        "key": "KAN-18",
+        "summary": "OpenSource — Q1",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "Project",
+        "key": "KAN-17",
+        "summary": "Project — Q1",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "CloudCert",
+        "key": "KAN-16",
+        "summary": "CloudCert — Q1",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "Fundamentals",
+        "key": "KAN-15",
+        "summary": "Fundamentals — Q1",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": "DSA",
+        "key": "KAN-14",
+        "summary": "DSA — Q1",
+        "daysStale": 6
+      },
+      {
+        "reason": "stale",
+        "track": null,
+        "key": "KAN-12",
+        "summary": "dsa",
+        "daysStale": 6
+      }
+    ]
+  }
+]

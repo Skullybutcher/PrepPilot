@@ -15,12 +15,16 @@ import path from 'node:path';
 import { getLoggedHoursByTrack, fetchOpenIssuesWithTransitionDates } from '../jira/velocity.js';
 import { findStaleCards } from '../generator/staleness.js';
 import { buildWeeklyCheckIn } from '../generator/weeklyCheckIn.js';
+import { generateRebalanceSuggestion } from '../generator/rebalanceSuggestion.js';
 import { getCurrentQuarter } from '../generator/pace.js';
+import { insertCheckIn, insertSuggestion } from '../db/index.js';
 import roadmap from '../config/roadmap.config.json' with { type: 'json' };
 
 const HISTORY_PATH = path.resolve('src/data/weekly-checkins.json');
+const SUGGESTIONS_PATH = path.resolve('src/data/rebalance-suggestions.json');
+const LATEST_REBALANCE_PATH = path.resolve('src/data/latest-rebalance.json');
 const LOOKBACK_DAYS = 7;
-const STALE_DAYS = 14;
+const STALE_DAYS = 1;
 
 async function loadHistory() {
   try {
@@ -34,6 +38,28 @@ async function loadHistory() {
 
 async function saveHistory(history) {
   await fs.writeFile(HISTORY_PATH, JSON.stringify(history, null, 2) + '\n', 'utf-8');
+}
+
+async function loadSuggestions() {
+  try {
+    const raw = await fs.readFile(SUGGESTIONS_PATH, 'utf-8');
+    return JSON.parse(raw);
+  } catch (err) {
+    if (err.code === 'ENOENT') return [];
+    throw err;
+  }
+}
+
+async function saveSuggestions(suggestions) {
+  await fs.writeFile(SUGGESTIONS_PATH, JSON.stringify(suggestions, null, 2) + '\n', 'utf-8');
+}
+
+function printSuggestion(suggestion) {
+  console.log('\nRebalance suggestion (pending approval):');
+  suggestion.options.forEach((opt, i) => {
+    console.log(`  ${i + 1}. [${opt.track}] ${opt.change}`);
+    console.log(`     ${opt.rationale}`);
+  });
 }
 
 function printSummary(checkIn) {
@@ -80,12 +106,31 @@ async function main() {
 
   history.push(checkIn);
   await saveHistory(history);
+  insertCheckIn(checkIn);
   console.log(`\nSaved to ${HISTORY_PATH}.`);
 
-  // TODO(Phase 4 next step): when checkIn.triggered, call NIM with checkIn
-  // as structured context and produce a RebalanceSuggestion (FR6) instead
-  // of just logging. Not built yet — this script currently only detects
-  // and records, it doesn't suggest anything.
+  if (checkIn.triggered) {
+    console.log('\nCalling NIM for a rebalance suggestion...');
+    try {
+      const suggestion = await generateRebalanceSuggestion(checkIn);
+      printSuggestion(suggestion);
+
+      const suggestions = await loadSuggestions();
+      suggestions.push(suggestion);
+      await saveSuggestions(suggestions);
+      console.log(`Saved to ${SUGGESTIONS_PATH} (approved: false — dashboard/CLI approval flow not yet built).`);
+
+      insertSuggestion(suggestion);
+      // Write latest-rebalance.json so the dashboard can surface it immediately
+      await fs.writeFile(LATEST_REBALANCE_PATH, JSON.stringify(suggestion, null, 2) + '\n', 'utf-8');
+      console.log(`Latest suggestion written to ${LATEST_REBALANCE_PATH}.`);
+    } catch (err) {
+      // Detection already succeeded and is persisted above — a NIM failure
+      // here shouldn't be treated as the whole run failing. Fail loudly via
+      // log per SPEC.md's reliability principle, but don't throw.
+      console.error(`\nNIM call failed, no suggestion generated this run: ${err.message}`);
+    }
+  }
 }
 
 main().catch((err) => {

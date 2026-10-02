@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import todosRouter from './routes/todos.js';
 import progressRouter from './routes/progress.js';
 import boardRouter from './routes/board.js';
+import planRouter from './routes/plan.js';
+import rebalanceRouter from './routes/rebalance.js';
 
 dotenv.config();
 
@@ -15,6 +17,8 @@ app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
 app.use('/api/todos', todosRouter);
 app.use('/api/progress', progressRouter);
 app.use('/api/board', boardRouter);
+app.use('/api/plan', planRouter);
+app.use('/api/rebalance', rebalanceRouter);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`API running on http://localhost:${PORT}`));

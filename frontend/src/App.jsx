@@ -2,9 +2,10 @@ import { useState } from 'react';
 import TodayView from './views/TodayView';
 import BoardView from './views/BoardView';
 import ProgressView from './views/ProgressView';
+import PlanView from './views/PlanView';
 import './App.css';
 
-const TABS = ['Today', 'Board', 'Progress'];
+const TABS = ['Today', 'Board', 'Progress', 'Plan'];
 
 export default function App() {
   const [tab, setTab] = useState('Today');
@@ -27,6 +28,7 @@ export default function App() {
         {tab === 'Today' && <TodayView />}
         {tab === 'Board' && <BoardView />}
         {tab === 'Progress' && <ProgressView />}
+        {tab === 'Plan' && <PlanView />}
       </main>
     </div>
   );

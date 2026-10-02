@@ -1,0 +1,413 @@
+From 6dc8b6e4a7647d3d396f00e378ddf68e490f8a34 Mon Sep 17 00:00:00 2001
+From: Claude <claude@anthropic.local>
+Date: Sat, 8 Aug 2026 17:09:23 +0000
+Subject: [PATCH] Phase 4: wire NIM call for FR6 rebalancing suggestions
+ (nemotron-3-nano-30b-a3b)
+
+---
+ SPEC.md                                       |  6 +-
+ backend/.env.example                          |  6 +-
+ backend/src/data/rebalance-suggestions.json   |  1 +
+ backend/src/generator/rebalanceSuggestion.js  | 92 +++++++++++++++++++
+ .../src/generator/rebalanceSuggestion.test.js | 85 +++++++++++++++++
+ backend/src/nim/client.js                     | 67 ++++++++++++++
+ backend/src/scripts/weeklyRebalanceCheck.js   | 45 ++++++++-
+ 7 files changed, 292 insertions(+), 10 deletions(-)
+ create mode 100644 backend/src/data/rebalance-suggestions.json
+ create mode 100644 backend/src/generator/rebalanceSuggestion.js
+ create mode 100644 backend/src/generator/rebalanceSuggestion.test.js
+ create mode 100644 backend/src/nim/client.js
+
+diff --git a/SPEC.md b/SPEC.md
+index 14aba7b..3b6ee07 100644
+--- a/SPEC.md
++++ b/SPEC.md
+@@ -84,7 +84,6 @@
+ 
+ - **Security**: Jira API tokens and Claude API keys stored as environment variables / secrets, never committed to GitHub. Use a `.env.example` file in the repo, real `.env` gitignored.
+ - **Cost**: Weekly LLM calls only (not daily), and using a free-tier NVIDIA NIM model rather than a paid API, keeps this at effectively zero ongoing cost. Daily todo generation is pure logic — no LLM call needed for that part.
+-- **Cost**: Weekly LLM calls only (not daily), and using a free-tier NVIDIA NIM model rather than a paid API, keeps this at effectively zero ongoing cost. Daily todo generation is pure logic — no LLM call needed for that part.
+ - **Reliability**: If the daily generator fails (Jira API down, etc.), it should fail loudly (log/notify) rather than silently produce no todos.
+ - **Maintainability**: Since this is a portfolio project too, structure it as you would any placement project — clear module boundaries, tests for the core logic (todo generation, pace calculation), a real README with architecture diagram.
+ 
+@@ -146,8 +145,7 @@ fully custom UI reading through the backend.
+ | Data store | SQLite or a free-tier Postgres (Supabase/Azure) | Small dataset, no need for anything heavy — not yet needed, Jira + JSON files have covered it so far |
+ | Dashboard | React (Vite) — **built** | Matches frontend-design conventions, deployable free (Vercel/Azure Static Web Apps) |
+ | Jira integration | Jira REST API v3, raw fetch — **built** | Straightforward, well-documented |
+-| LLM calls | NVIDIA NIM (free-tier model) | For the weekly rebalancing suggestions only — Phase 4, not yet built. Swapped from the originally suggested Claude API to keep this at zero cost; specific model TBD when Phase 4 starts |
+-| LLM calls | NVIDIA NIM (free-tier model) | For the weekly rebalancing suggestions only — Phase 4, not yet built. Swapped from the originally suggested Claude API to keep this at zero cost; specific model TBD when Phase 4 starts |
++| LLM calls | NVIDIA NIM — `nemotron-3-nano-30b-a3b` (free tier) | For the weekly rebalancing suggestions (FR6) only. Swapped from the originally suggested Claude API to keep this at zero cost. Picked Nemotron 3 Nano specifically for its RL-trained JSON schema adherence — FR6 is a small structured in/out call (WeeklyCheckIn → 1-2 option RebalanceSuggestion), not open-ended reasoning, so a schema-specialized small model beats a bigger general one. A larger model (DeepSeek V4 Flash or GLM-5.2) is the better pick for FR7's plan-builder chat later, since that's genuine multi-turn reasoning over a full document, not terse JSON. |
+ | Hosting | Azure (matches your cloud track from the roadmap) | Double-dips as Azure practice — not yet deployed, currently local-only |
+ 
+ ---
+@@ -159,7 +157,7 @@ fully custom UI reading through the backend.
+ - **Track**: name, weekly target hours, cumulative hours logged, status (on-pace/behind/ahead)
+ - **DailyTodo**: date, task list (each with track label, Jira subtask ID, done status)
+ - **WeeklyCheckIn**: week number, per-track pace delta, consecutive-behind counter
+-- **RebalanceSuggestion**: date, tracks affected, suggested change, approved (bool)
++- **RebalanceSuggestion**: `{ date, weekNumber, options: [{ track, change, rationale }] (1-2 entries), approved: bool }`. `options` comes verbatim from the NIM call (`generator/rebalanceSuggestion.js`); `date`/`weekNumber`/`approved` are set by application code, not the model.
+ 
+ ---
+ 
+diff --git a/backend/.env.example b/backend/.env.example
+index 10d69a6..98c643c 100644
+--- a/backend/.env.example
++++ b/backend/.env.example
+@@ -4,8 +4,10 @@ JIRA_EMAIL=you@example.com
+ JIRA_API_TOKEN=your_jira_api_token
+ JIRA_PROJECT_KEY=RPC
+ 
+-# Claude API (used only by the weekly rebalancing agent, Phase 4)
+-ANTHROPIC_API_KEY=your_anthropic_api_key
++# NVIDIA NIM (used only by the weekly rebalancing agent, FR6, Phase 4)
++# Get a free key at https://build.nvidia.com — no credit card required.
++NIM_API_KEY=your_nvidia_nim_api_key
++NIM_MODEL=nvidia/nemotron-3-nano-30b-a3b
+ 
+ # Local data store (SQLite file path for now)
+ DB_PATH=./data/roadmap.db
+diff --git a/backend/src/data/rebalance-suggestions.json b/backend/src/data/rebalance-suggestions.json
+new file mode 100644
+index 0000000..fe51488
+--- /dev/null
++++ b/backend/src/data/rebalance-suggestions.json
+@@ -0,0 +1 @@
++[]
+diff --git a/backend/src/generator/rebalanceSuggestion.js b/backend/src/generator/rebalanceSuggestion.js
+new file mode 100644
+index 0000000..66131d2
+--- /dev/null
++++ b/backend/src/generator/rebalanceSuggestion.js
+@@ -0,0 +1,92 @@
++// FR6, NIM call half. Takes a `triggered: true` WeeklyCheckIn (built by
++// weeklyCheckIn.js) and asks NIM for 1-2 concrete rebalancing options.
++//
++// Per SPEC.md FR6: the model only ever sees this pre-computed structured
++// payload — never raw Jira data or roadmap.config.json — and its job is
++// narrow (produce options, not explanations or encouragement). Output must
++// be strict JSON; free-form chat is a contract violation, not a style choice.
++
++import { nimChat } from '../nim/client.js';
++
++const SYSTEM_PROMPT = `You are a rebalancing assistant for a personal placement-prep roadmap tracker.
++You will be given a WeeklyCheckIn record describing which tracks are off-pace
++and/or which Jira cards have gone stale. Your only job is to propose 1-2
++concrete rebalancing options.
++
++Rules:
++- Output ONLY a JSON object matching this exact shape, nothing else:
++  {"options": [{"track": string, "change": string, "rationale": string}, ...]}
++- "options" must have 1 or 2 entries — never 0, never 3+.
++- "track" must be one of the track names present in the input's "tracks" object,
++  or "general" if the option doesn't target a single track.
++- "change" is a single concrete, actionable adjustment (e.g. a new daily
++  target, a card to split or drop) — not a vague suggestion like "try harder".
++- "rationale" is one short sentence, grounded only in the numbers you were
++  given — no assumptions about why the person is behind.
++- Do not include encouragement, apologies, or any text outside the JSON object.`;
++
++function buildUserPrompt(checkIn) {
++  // Strip history/streak bookkeeping the model doesn't need to reason about
++  // beyond what's already surfaced in `triggers` — keep the payload minimal.
++  const payload = {
++    weekNumber: checkIn.weekNumber,
++    date: checkIn.date,
++    tracks: checkIn.tracks,
++    triggers: checkIn.triggers,
++  };
++  return `WeeklyCheckIn:\n${JSON.stringify(payload, null, 2)}`;
++}
++
++export function validateOptions(parsed) {
++  if (!parsed || !Array.isArray(parsed.options)) {
++    throw new Error('Response missing "options" array');
++  }
++  if (parsed.options.length < 1 || parsed.options.length > 2) {
++    throw new Error(`Expected 1-2 options, got ${parsed.options.length}`);
++  }
++  for (const opt of parsed.options) {
++    if (typeof opt.track !== 'string' || typeof opt.change !== 'string' || typeof opt.rationale !== 'string') {
++      throw new Error(`Malformed option: ${JSON.stringify(opt)}`);
++    }
++  }
++  return parsed.options;
++}
++
++/**
++ * Generate a RebalanceSuggestion for a triggered WeeklyCheckIn.
++ * Throws if checkIn.triggered is false — callers should only invoke this
++ * once the trigger logic in weeklyCheckIn.js has already decided to fire.
++ *
++ * @param {object} checkIn - a WeeklyCheckIn record with triggered: true
++ * @param {object} [deps]
++ * @param {typeof nimChat} [deps.chat] - injectable for testing; defaults to the real NIM client
++ * @returns {Promise<{date: string, weekNumber: number, options: object[], approved: boolean}>}
++ */
++export async function generateRebalanceSuggestion(checkIn, { chat = nimChat } = {}) {
++  if (!checkIn.triggered) {
++    throw new Error('generateRebalanceSuggestion called on a non-triggered WeeklyCheckIn');
++  }
++
++  const messages = [
++    { role: 'system', content: SYSTEM_PROMPT },
++    { role: 'user', content: buildUserPrompt(checkIn) },
++  ];
++
++  const raw = await chat({ messages, responseFormat: 'json_object', temperature: 0.3 });
++
++  let parsed;
++  try {
++    parsed = JSON.parse(raw);
++  } catch (err) {
++    throw new Error(`NIM returned invalid JSON: ${raw}`);
++  }
++
++  const options = validateOptions(parsed);
++
++  return {
++    date: checkIn.date,
++    weekNumber: checkIn.weekNumber,
++    options,
++    approved: false,
++  };
++}
+diff --git a/backend/src/generator/rebalanceSuggestion.test.js b/backend/src/generator/rebalanceSuggestion.test.js
+new file mode 100644
+index 0000000..f8a360e
+--- /dev/null
++++ b/backend/src/generator/rebalanceSuggestion.test.js
+@@ -0,0 +1,85 @@
++import { test } from 'node:test';
++import assert from 'node:assert/strict';
++import { generateRebalanceSuggestion, validateOptions } from './rebalanceSuggestion.js';
++
++const triggeredCheckIn = {
++  weekNumber: 5,
++  date: '2026-08-08',
++  tracks: {
++    DSA: { status: 'behind', ratio: 0.6, consecutiveBehind: 2 },
++    System_Design: { status: 'on-pace', ratio: 1.0, consecutiveBehind: 0 },
++  },
++  staleCards: [],
++  triggered: true,
++  triggers: [{ reason: 'off-pace', track: 'DSA', consecutiveBehind: 2, ratio: 0.6 }],
++};
++
++function fakeChat(response) {
++  return async () => JSON.stringify(response);
++}
++
++test('rejects a non-triggered WeeklyCheckIn without calling NIM', async () => {
++  const checkIn = { ...triggeredCheckIn, triggered: false };
++  await assert.rejects(
++    () => generateRebalanceSuggestion(checkIn, { chat: async () => { throw new Error('should not be called'); } }),
++    /non-triggered/
++  );
++});
++
++test('returns a well-formed RebalanceSuggestion on a valid NIM response', async () => {
++  const chat = fakeChat({
++    options: [
++      { track: 'DSA', change: 'Drop daily target from 5 to 3 problems for one week', rationale: 'DSA is behind 2 consecutive weeks at 60% of required pace.' },
++    ],
++  });
++
++  const suggestion = await generateRebalanceSuggestion(triggeredCheckIn, { chat });
++
++  assert.equal(suggestion.date, '2026-08-08');
++  assert.equal(suggestion.weekNumber, 5);
++  assert.equal(suggestion.approved, false);
++  assert.equal(suggestion.options.length, 1);
++  assert.equal(suggestion.options[0].track, 'DSA');
++});
++
++test('accepts 2 options', async () => {
++  const chat = fakeChat({
++    options: [
++      { track: 'DSA', change: 'a', rationale: 'r' },
++      { track: 'general', change: 'b', rationale: 'r2' },
++    ],
++  });
++  const suggestion = await generateRebalanceSuggestion(triggeredCheckIn, { chat });
++  assert.equal(suggestion.options.length, 2);
++});
++
++test('throws on invalid JSON from NIM', async () => {
++  const chat = async () => 'not json';
++  await assert.rejects(() => generateRebalanceSuggestion(triggeredCheckIn, { chat }), /invalid JSON/);
++});
++
++test('throws when NIM returns 0 options', async () => {
++  const chat = fakeChat({ options: [] });
++  await assert.rejects(() => generateRebalanceSuggestion(triggeredCheckIn, { chat }), /1-2 options/);
++});
++
++test('throws when NIM returns 3+ options', async () => {
++  const chat = fakeChat({
++    options: [
++      { track: 'DSA', change: 'a', rationale: 'r' },
++      { track: 'DSA', change: 'b', rationale: 'r' },
++      { track: 'DSA', change: 'c', rationale: 'r' },
++    ],
++  });
++  await assert.rejects(() => generateRebalanceSuggestion(triggeredCheckIn, { chat }), /1-2 options/);
++});
++
++test('throws when an option is missing a required field', async () => {
++  const chat = fakeChat({ options: [{ track: 'DSA', change: 'a' }] }); // no rationale
++  await assert.rejects(() => generateRebalanceSuggestion(triggeredCheckIn, { chat }), /Malformed option/);
++});
++
++test('validateOptions is exported and usable directly', () => {
++  const options = validateOptions({ options: [{ track: 'DSA', change: 'a', rationale: 'r' }] });
++  assert.equal(options.length, 1);
++});
+diff --git a/backend/src/nim/client.js b/backend/src/nim/client.js
+new file mode 100644
+index 0000000..5038b57
+--- /dev/null
++++ b/backend/src/nim/client.js
+@@ -0,0 +1,67 @@
++// Thin client for NVIDIA NIM's OpenAI-compatible chat completions endpoint.
++// Used by generator/rebalanceSuggestion.js (FR6) and, later, the FR7 plan
++// chat endpoint. Kept generic on purpose — no FR6-specific logic here.
++
++import fetch from 'node-fetch';
++import 'dotenv/config';
++
++const NIM_BASE_URL = 'https://integrate.api.nvidia.com/v1';
++const DEFAULT_MODEL = 'nvidia/nemotron-3-nano-30b-a3b';
++
++/**
++ * Call NIM's chat completions endpoint and return the assistant's raw
++ * message content (string). Callers that need structured output should
++ * pass responseFormat: 'json_object' and parse the result themselves —
++ * this function stays a plain string in/out wrapper.
++ *
++ * @param {object} params
++ * @param {{role: string, content: string}[]} params.messages
++ * @param {string} [params.model] - defaults to NIM_MODEL env var, then Nemotron 3 Nano
++ * @param {'json_object'|undefined} [params.responseFormat]
++ * @param {number} [params.temperature]
++ * @param {number} [params.maxTokens]
++ */
++export async function nimChat({
++  messages,
++  model = process.env.NIM_MODEL || DEFAULT_MODEL,
++  responseFormat,
++  temperature = 0.3,
++  maxTokens = 1024,
++}) {
++  const { NIM_API_KEY } = process.env;
++  if (!NIM_API_KEY) {
++    throw new Error('Missing NIM_API_KEY. Copy .env.example to .env and fill in NIM_API_KEY.');
++  }
++
++  const body = {
++    model,
++    messages,
++    temperature,
++    max_tokens: maxTokens,
++  };
++  if (responseFormat === 'json_object') {
++    body.response_format = { type: 'json_object' };
++  }
++
++  const res = await fetch(`${NIM_BASE_URL}/chat/completions`, {
++    method: 'POST',
++    headers: {
++      Authorization: `Bearer ${NIM_API_KEY}`,
++      'Content-Type': 'application/json',
++      Accept: 'application/json',
++    },
++    body: JSON.stringify(body),
++  });
++
++  if (!res.ok) {
++    const errText = await res.text();
++    throw new Error(`NIM API error ${res.status}: ${errText}`);
++  }
++
++  const data = await res.json();
++  const content = data.choices?.[0]?.message?.content;
++  if (typeof content !== 'string' || content.length === 0) {
++    throw new Error(`NIM API returned no content: ${JSON.stringify(data)}`);
++  }
++  return content;
++}
+diff --git a/backend/src/scripts/weeklyRebalanceCheck.js b/backend/src/scripts/weeklyRebalanceCheck.js
+index 3cadaf4..18b51c9 100644
+--- a/backend/src/scripts/weeklyRebalanceCheck.js
++++ b/backend/src/scripts/weeklyRebalanceCheck.js
+@@ -15,10 +15,12 @@ import path from 'node:path';
+ import { getLoggedHoursByTrack, fetchOpenIssuesWithTransitionDates } from '../jira/velocity.js';
+ import { findStaleCards } from '../generator/staleness.js';
+ import { buildWeeklyCheckIn } from '../generator/weeklyCheckIn.js';
++import { generateRebalanceSuggestion } from '../generator/rebalanceSuggestion.js';
+ import { getCurrentQuarter } from '../generator/pace.js';
+ import roadmap from '../config/roadmap.config.json' with { type: 'json' };
+ 
+ const HISTORY_PATH = path.resolve('src/data/weekly-checkins.json');
++const SUGGESTIONS_PATH = path.resolve('src/data/rebalance-suggestions.json');
+ const LOOKBACK_DAYS = 7;
+ const STALE_DAYS = 14;
+ 
+@@ -36,6 +38,28 @@ async function saveHistory(history) {
+   await fs.writeFile(HISTORY_PATH, JSON.stringify(history, null, 2) + '\n', 'utf-8');
+ }
+ 
++async function loadSuggestions() {
++  try {
++    const raw = await fs.readFile(SUGGESTIONS_PATH, 'utf-8');
++    return JSON.parse(raw);
++  } catch (err) {
++    if (err.code === 'ENOENT') return [];
++    throw err;
++  }
++}
++
++async function saveSuggestions(suggestions) {
++  await fs.writeFile(SUGGESTIONS_PATH, JSON.stringify(suggestions, null, 2) + '\n', 'utf-8');
++}
++
++function printSuggestion(suggestion) {
++  console.log('\nRebalance suggestion (pending approval):');
++  suggestion.options.forEach((opt, i) => {
++    console.log(`  ${i + 1}. [${opt.track}] ${opt.change}`);
++    console.log(`     ${opt.rationale}`);
++  });
++}
++
+ function printSummary(checkIn) {
+   console.log(`\nWeek ${checkIn.weekNumber} (${checkIn.date})`);
+   for (const [track, t] of Object.entries(checkIn.tracks)) {
+@@ -82,10 +106,23 @@ async function main() {
+   await saveHistory(history);
+   console.log(`\nSaved to ${HISTORY_PATH}.`);
+ 
+-  // TODO(Phase 4 next step): when checkIn.triggered, call NIM with checkIn
+-  // as structured context and produce a RebalanceSuggestion (FR6) instead
+-  // of just logging. Not built yet — this script currently only detects
+-  // and records, it doesn't suggest anything.
++  if (checkIn.triggered) {
++    console.log('\nCalling NIM for a rebalance suggestion...');
++    try {
++      const suggestion = await generateRebalanceSuggestion(checkIn);
++      printSuggestion(suggestion);
++
++      const suggestions = await loadSuggestions();
++      suggestions.push(suggestion);
++      await saveSuggestions(suggestions);
++      console.log(`Saved to ${SUGGESTIONS_PATH} (approved: false — dashboard/CLI approval flow not yet built).`);
++    } catch (err) {
++      // Detection already succeeded and is persisted above — a NIM failure
++      // here shouldn't be treated as the whole run failing. Fail loudly via
++      // log per SPEC.md's reliability principle, but don't throw.
++      console.error(`\nNIM call failed, no suggestion generated this run: ${err.message}`);
++    }
++  }
+ }
+ 
+ main().catch((err) => {
+-- 
+2.43.0

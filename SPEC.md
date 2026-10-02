@@ -84,7 +84,6 @@
 
 - **Security**: Jira API tokens and Claude API keys stored as environment variables / secrets, never committed to GitHub. Use a `.env.example` file in the repo, real `.env` gitignored.
 - **Cost**: Weekly LLM calls only (not daily), and using a free-tier NVIDIA NIM model rather than a paid API, keeps this at effectively zero ongoing cost. Daily todo generation is pure logic — no LLM call needed for that part.
-- **Cost**: Weekly LLM calls only (not daily), and using a free-tier NVIDIA NIM model rather than a paid API, keeps this at effectively zero ongoing cost. Daily todo generation is pure logic — no LLM call needed for that part.
 - **Reliability**: If the daily generator fails (Jira API down, etc.), it should fail loudly (log/notify) rather than silently produce no todos.
 - **Maintainability**: Since this is a portfolio project too, structure it as you would any placement project — clear module boundaries, tests for the core logic (todo generation, pace calculation), a real README with architecture diagram.
 
@@ -139,16 +138,18 @@ fully custom UI reading through the backend.
 
 ## 6. Suggested Tech Stack (adjust to what you're comfortable with — this is also a learning project)
 
-| Layer | Suggestion | Why |
+| Layer | Decision | Why |
 |---|---|---|
-| Backend/API | Node.js (Express) — **built** | Either fits your Software Engineering track goals; pick whichever you want more reps in |
-| Scheduled jobs | GitHub Actions (cron schedule) or a simple server-side cron | Free, versioned, visible in your GitHub activity |
-| Data store | SQLite or a free-tier Postgres (Supabase/Azure) | Small dataset, no need for anything heavy — not yet needed, Jira + JSON files have covered it so far |
-| Dashboard | React (Vite) — **built** | Matches frontend-design conventions, deployable free (Vercel/Azure Static Web Apps) |
+| Backend/API | Node.js (Express) — **built** | Software Engineering track reps; clean module boundary between Jira and dashboard |
+| Scheduled jobs | **GitHub Actions** (cron schedule) — **Phase 5** | Free, versioned, commit-visible in GitHub activity graph (recruiter-facing) |
+| Data store | **SQLite** (`better-sqlite3`) — **Phase 5** | Lightweight; needed to persist `WeeklyCheckIn` + `RebalanceSuggestion` history that has no natural home in Jira. `DB_PATH=./data/roadmap.db` already in `.env.example`. |
+| Dashboard | React (Vite) — **built** | Matches frontend conventions; deployable on Vercel free tier |
 | Jira integration | Jira REST API v3, raw fetch — **built** | Straightforward, well-documented |
-| LLM calls | NVIDIA NIM (free-tier model) | For the weekly rebalancing suggestions only — Phase 4, not yet built. Swapped from the originally suggested Claude API to keep this at zero cost; specific model TBD when Phase 4 starts |
-| LLM calls | NVIDIA NIM (free-tier model) | For the weekly rebalancing suggestions only — Phase 4, not yet built. Swapped from the originally suggested Claude API to keep this at zero cost; specific model TBD when Phase 4 starts |
-| Hosting | Azure (matches your cloud track from the roadmap) | Double-dips as Azure practice — not yet deployed, currently local-only |
+| LLM — FR6 (rebalancing) | **NVIDIA NIM `nvidia/nemotron-3.5-lightning-30b-a3b`** (free tier) | Fastest 30B A3B MoE, purpose-built for specialized agentic tasks with leading domain accuracy. Perfect for the narrow structured call (WeeklyCheckIn → 1-2 JSON options). **Different model from the old `nemotron-3-nano-30b-a3b`** which failed. Fallback: `deepseek-ai/deepseek-v4.1-flash` (8B active params, fast instruction-following). |
+| LLM — FR7 (plan chat) | **NVIDIA NIM `nvidia/nemotron-3-ultra-550b-a55b`** (free tier) | 1M context window, explicitly strong at agentic reasoning, coding, and **planning** — exactly the FR7 use case. Zero risk of context overflow even with full `roadmap.config.json` + Striver progress + a long conversation. Same NIM API key, no second provider. |
+| Frontend hosting | **Vercel** (Hobby plan) | Free: 100 GB bandwidth, 1M function invocations, no sleep/cold-start for static sites. Zero config for Vite projects (`vite build` → deploy). |
+| Backend hosting | **Render** (free tier) | Free: 750 instance hours/month (enough for 24/7 with one service). Does sleep after 15 min inactivity — mitigated by a UptimeRobot ping on `/api/health` every 10 min. Better than Railway's $1/mo credit cap for a low-traffic personal tool. |
+| Backend `package.json` | Add `"syncStriver": "node src/scripts/syncStriverToJira.js"` — currently missing | `sync:striver` script referenced in README is not in package.json |
 
 ---
 
@@ -159,7 +160,7 @@ fully custom UI reading through the backend.
 - **Track**: name, weekly target hours, cumulative hours logged, status (on-pace/behind/ahead)
 - **DailyTodo**: date, task list (each with track label, Jira subtask ID, done status)
 - **WeeklyCheckIn**: week number, per-track pace delta, consecutive-behind counter
-- **RebalanceSuggestion**: date, tracks affected, suggested change, approved (bool)
+- **RebalanceSuggestion**: `{ date, weekNumber, options: [{ track, change, rationale }] (1-2 entries), approved: bool }`. `options` comes verbatim from the NIM call (`generator/rebalanceSuggestion.js`); `date`/`weekNumber`/`approved` are set by application code, not the model.
 
 ---
 
@@ -171,8 +172,11 @@ fully custom UI reading through the backend.
 | **Phase 1** | Striver A2Z sheet as structured JSON + Jira sync script (read-only) | ✅ Done — full sheet, 18 steps / 474 problems, via Next.js flight-payload parsing |
 | **Phase 2** | Daily todo generator (logic only, no LLM) + writes to Jira subtasks | ✅ Done |
 | **Phase 3** | Dashboard v1: today's todos + basic progress views, reading from local DB/Jira | ✅ Done — Express API + React dashboard (Today / Board / Progress), reading live from Jira and the Striver JSON, no local DB needed yet. Extended with a done-button and drag-and-drop status changes (both optimistic-UI, updating instantly and rolling back only on failure), 30s auto-refresh polling, and server-side auto-transition of today's tasks from "To Do" to "In Progress" on first view each day |
-| **Phase 4** | Weekly rebalancing agent (combined off-pace/stale trigger, NVIDIA NIM call, structured suggestions per FR6) + Conversational Plan Builder chat tab (FR7) | Not started — Month 2+, once real pace data exists. FR7 designed (trigger logic, chat architecture, no-RAG/no-cross-session-memory decisions); not yet built. |
-| **Phase 5** | Polish: tests, CI/CD, deploy dashboard, README + architecture diagram | Not started |
+| **Phase 4a** | Fix NIM rebalancing agent (FR6): swap model to `llama-4-scout`, refactor env mutation, fix system prompt, add corrective-retry tests | **In progress — blocked on NIM model reliability** — trigger logic and deterministic fallback work; NIM path broken (empty options / network failures with previous models). See `handover.md`. |
+| **Phase 4b** | Conversational Plan Builder chat tab (FR7): `POST /api/plan/chat` + `PlanView.jsx` | **Not started** — backend route, frontend tab, and approve-before-write flow all pending. Model resolved: `llama-4-maverick` (512K ctx). |
+| **Phase 4c** | RebalanceSuggestion card in dashboard: surface NIM suggestions as approve/reject card on Today view | **Not started** — no UI for the weekly suggestion output yet. |
+| **Phase 4d** | All-track progress view + streak: show all 5 tracks (not just DSA) in ProgressView; add streak counter | **Not started** |
+| **Phase 5** | SQLite store for WeeklyCheckIn/RebalanceSuggestion history; UI polish (fonts, animations, loading skeletons); tests; GitHub Actions CI (daily + weekly cron); deploy to Vercel + Render; README with Mermaid diagram + screenshot | **Not started** |
 
 Total build time budget: **~2 weeks of focused work**, ideally absorbed into Month 1's project slot plus one recovery week — not carved out of DSA time.
 
@@ -197,5 +201,7 @@ Total build time budget: **~2 weeks of focused work**, ideally absorbed into Mon
 1. ~~Backend language: Node.js or Python?~~ → **Resolved: Node.js (Express).**
 2. ~~Dashboard: fully custom UI, or embed Jira's board view inside a lighter custom shell?~~ → **Resolved: fully custom UI (React/Vite), reading through the Express API, not embedding Jira directly.**
 3. ~~Do you already have a Jira Cloud instance + API token, or do we start from account creation?~~ → **Resolved: existing Jira Cloud instance in use since Phase 0.**
-4. Data store: still none — Jira + local JSON files (`striver-a2z.json`) have been sufficient through Phase 3. Revisit if Phase 4/5 needs to persist `WeeklyCheckIn` or `RebalanceSuggestion` history, since those don't have a natural home in Jira.
-5. Deployment target: Azure was the original suggestion (double-dips as cloud-track practice) — not yet decided or started, relevant once Phase 5 begins.
+4. ~~Data store: SQLite or defer?~~ → **Resolved: SQLite (`better-sqlite3`) added in Phase 5.** Path: `backend/data/roadmap.db`. Stores `WeeklyCheckIn` and `RebalanceSuggestion` history (not a natural fit for Jira). Not needed for Phases 0–4.
+5. ~~Deployment target: Azure?~~ → **Resolved: Vercel (frontend) + Render (backend free tier).** Azure deferred — it remains the right final target for the cloud cert track but adds setup friction. Vercel + Render get the project live in Phase 5 with zero cost and minimal config. Migrate to Azure later as a deliberate cloud-track exercise.
+6. ~~LLM model for FR6 (rebalancing)?~~ → **Resolved: `nvidia/nemotron-3.5-lightning-30b-a3b` via NVIDIA NIM.** Fastest 30B A3B MoE, purpose-built for specialized agentic tasks. Confirmed free endpoint on account. Note: this is a **different model** from the broken `nvidia/nemotron-3-nano-30b-a3b` (old Nano that returned empty options). Fallback: `deepseek-ai/deepseek-v4.1-flash`.
+7. ~~LLM model for FR7 (plan chat)?~~ → **Resolved: `nvidia/nemotron-3-ultra-550b-a55b` via NVIDIA NIM.** 1M context window handles the full roadmap document + entire conversation history with enormous headroom. Explicitly strong at agentic reasoning and planning. Same NIM API key as FR6.
