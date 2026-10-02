@@ -1,19 +1,43 @@
-// frontend/src/views/BoardView.jsx
 import { useEffect, useState, useCallback } from 'react';
+import { motion } from 'framer-motion';
 import { getBoard, transitionTodo } from '../api';
+import { useToast } from '../components/ToastProvider';
 
 const COLUMNS = ['To Do', 'In Progress', 'Done'];
 
+const COLUMN_COLORS = {
+  'To Do':       'var(--text-muted)',
+  'In Progress': 'var(--warning)',
+  'Done':        'var(--success)',
+};
+
+function SkeletonBoard() {
+  return (
+    <div style={{ display: 'flex', gap: 16 }}>
+      {[1, 2, 3].map((i) => (
+        <div key={i} style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <div className="skeleton" style={{ height: 24, width: '60%' }} />
+          {[1, 2].map((j) => <div key={j} className="skeleton" style={{ height: 72 }} />)}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function BoardView() {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [dragKey, setDragKey] = useState(null);
+  const [data, setData]         = useState(null);
+  const [error, setError]       = useState(null);
+  const [loading, setLoading]   = useState(true);
+  const [dragKey, setDragKey]   = useState(null);
   const [dragFromCol, setDragFromCol] = useState(null);
   const [dragOverCol, setDragOverCol] = useState(null);
+  const toast = useToast();
 
   const load = useCallback(() => {
-    getBoard().then(setData).catch((err) => setError(err.message)).finally(() => setLoading(false));
+    getBoard()
+      .then(setData)
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
   }, []);
 
   useEffect(() => {
@@ -23,85 +47,143 @@ export default function BoardView() {
   }, [load]);
 
   const handleDrop = async (column) => {
-  setDragOverCol(null);
-  if (!dragKey || column === dragFromCol) {
-    setDragKey(null);
-    setDragFromCol(null);
-    return;
-  }
-  const key = dragKey;
-  const fromCol = dragFromCol;
-  setDragKey(null);
-  setDragFromCol(null);
+    setDragOverCol(null);
+    if (!dragKey || column === dragFromCol) { setDragKey(null); setDragFromCol(null); return; }
+    const key = dragKey, fromCol = dragFromCol;
+    setDragKey(null); setDragFromCol(null);
 
-  const item = data[fromCol]?.find((i) => i.key === key);
+    const item = data[fromCol]?.find((i) => i.key === key);
     if (!item) return;
 
-    // Optimistic: move it in local state immediately, don't wait on the server
     setData((prev) => ({
       ...prev,
       [fromCol]: prev[fromCol].filter((i) => i.key !== key),
-      [column]: [...(prev[column] || []), item],
+      [column]:  [...(prev[column] || []), item],
     }));
 
     try {
       await transitionTodo(key, column);
-      // success — state already reflects it, nothing more to do
     } catch (err) {
-      setError(err.message);
-      // roll back: put the card back where it came from
+      toast(err.message || 'Failed to move card', 'error');
       setData((prev) => ({
         ...prev,
-        [column]: prev[column].filter((i) => i.key !== key),
+        [column]:  prev[column].filter((i) => i.key !== key),
         [fromCol]: [...(prev[fromCol] || []), item],
       }));
     }
   };
 
-  if (loading) return <div className="skeleton"></div>;
-  if (error) return <p className="status error">Error: {error}</p>;
+  if (loading) return <SkeletonBoard />;
+  if (error)   return <p className="status error">Error: {error}</p>;
 
   return (
     <div>
       <div className="view-header">
-        <button className="refresh-btn" onClick={load}>Refresh</button>
+        <h2>Board</h2>
+        <button className="refresh-btn" onClick={load} aria-label="Refresh board">↻ Refresh</button>
       </div>
-      <div className="board">
+
+      {/* Desktop kanban */}
+      <div className="board" role="region" aria-label="Kanban board">
         {COLUMNS.map((col) => (
           <div
             key={col}
             className={`board-column ${dragOverCol === col ? `board-column-dragover col-${col.replace(/\s/g, '-').toLowerCase()}` : ''}`}
-            onDragOver={(e) => {
-              e.preventDefault();
-              if (dragOverCol !== col) setDragOverCol(col);
-            }}
-            onDragLeave={(e) => {
-              // only clear if we're actually leaving the column, not entering a child
-              if (!e.currentTarget.contains(e.relatedTarget)) setDragOverCol(null);
-            }}
+            onDragOver={(e) => { e.preventDefault(); if (dragOverCol !== col) setDragOverCol(col); }}
+            onDragLeave={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setDragOverCol(null); }}
             onDrop={() => handleDrop(col)}
           >
-            <h3 className="board-column-title">
-              {col} <span className="board-count">{data[col]?.length || 0}</span>
+            <h3 className="board-column-title" style={{ color: COLUMN_COLORS[col] }}>
+              {col}
+              <span className="board-count">{data[col]?.length || 0}</span>
             </h3>
+
             <div className="board-cards">
               {(data[col] || []).map((item) => (
-                <div
+                <motion.div
                   key={item.key}
                   className={`board-card ${dragKey === item.key ? 'board-card-dragging' : ''}`}
                   draggable
                   onDragStart={() => { setDragKey(item.key); setDragFromCol(col); }}
                   onDragEnd={() => { setDragKey(null); setDragFromCol(null); setDragOverCol(null); }}
+                  whileHover={dragKey ? {} : {
+                    y: -4,
+                    boxShadow: `0 12px 32px rgba(99,102,241,0.2)`,
+                    transition: { duration: 0.15 },
+                  }}
+                  layout
                 >
                   <span className="board-card-key">{item.key}</span>
                   <p className="board-card-summary">{item.summary}</p>
-                </div>
+                </motion.div>
               ))}
-              {(data[col] || []).length === 0 && <p className="board-empty">Nothing here</p>}
+              {(data[col] || []).length === 0 && (
+                <p className="board-empty">Drop cards here</p>
+              )}
             </div>
           </div>
         ))}
       </div>
+
+      {/* Mobile accordion (< 640px) */}
+      <div className="board-accordion" role="region" aria-label="Board accordion">
+        {COLUMNS.map((col) => (
+          <MobileColumn
+            key={col}
+            col={col}
+            items={data[col] || []}
+            color={COLUMN_COLORS[col]}
+          />
+        ))}
+      </div>
+
+      <style>{`
+        .board-accordion { display: none; flex-direction: column; gap: 8px; }
+        @media (max-width: 640px) {
+          .board { display: none; }
+          .board-accordion { display: flex; }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+function MobileColumn({ col, items, color }) {
+  const [open, setOpen] = useState(col === 'In Progress');
+  return (
+    <div style={{ border: '1px solid var(--border)', borderRadius: 'var(--radius)', overflow: 'hidden' }}>
+      <button
+        onClick={() => setOpen((v) => !v)}
+        style={{
+          width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          padding: '12px 16px', background: 'var(--surface)', border: 'none',
+          color: 'var(--text)', fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 600,
+          cursor: 'pointer',
+        }}
+        aria-expanded={open}
+      >
+        <span style={{ color }}>{col}</span>
+        <span style={{ color: 'var(--text-muted)', fontSize: 12 }}>
+          {items.length} {open ? '▲' : '▼'}
+        </span>
+      </button>
+      {open && (
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: 'auto', opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.22, ease: 'easeOut' }}
+          style={{ padding: '8px 12px 12px', display: 'flex', flexDirection: 'column', gap: 8 }}
+        >
+          {items.length === 0 && <p className="board-empty">Nothing here</p>}
+          {items.map((item) => (
+            <div key={item.key} className="board-card">
+              <span className="board-card-key">{item.key}</span>
+              <p className="board-card-summary">{item.summary}</p>
+            </div>
+          ))}
+        </motion.div>
+      )}
     </div>
   );
 }
