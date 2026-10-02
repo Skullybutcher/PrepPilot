@@ -1,5 +1,6 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
+import logoUrl from '../assets/logo.svg';
 
 export default function NavBar({ breadcrumb }) {
   const location = useLocation();
@@ -11,8 +12,7 @@ export default function NavBar({ breadcrumb }) {
       <div className="navbar-inner">
         <div className="navbar-left">
           <Link to="/" className="navbar-logo" aria-label="PrepPilot home">
-            <span className="navbar-logo-icon" aria-hidden="true">🧭</span>
-            <span className="navbar-logo-text">PrepPilot</span>
+            <img src={logoUrl} alt="PrepPilot Logo" className="navbar-logo-img" />
           </Link>
           {breadcrumb && (
             <nav className="navbar-breadcrumb" aria-label="Breadcrumb">
@@ -79,14 +79,7 @@ export default function NavBar({ breadcrumb }) {
           gap: 8px;
           text-decoration: none;
         }
-        .navbar-logo-icon { font-size: 20px; line-height: 1; }
-        .navbar-logo-text {
-          font-family: var(--font-serif);
-          font-size: 18px;
-          font-weight: 700;
-          color: var(--text);
-          letter-spacing: -0.01em;
-        }
+        .navbar-logo-img { height: 28px; width: auto; }
         .navbar-breadcrumb {
           display: flex;
           align-items: center;
