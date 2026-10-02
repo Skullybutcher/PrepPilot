@@ -1,4 +1,4 @@
-# Roadmap Copilot
+# PrepPilot
 
 A daily todo generator for a 12-month placement prep plan. Reads a quarterly
 roadmap config and a Striver A2Z DSA sheet, checks actual progress against

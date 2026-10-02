@@ -1,4 +1,4 @@
-# RoadMap Copilot — Agent Task Division
+# PrepPilot — Agent Task Division
 
 > Read `plan.md` for full implementation details, contracts, and code shapes for every task listed here.  
 > Read `handover.md` for NIM model context and known failure history.  

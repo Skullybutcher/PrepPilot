@@ -184,7 +184,7 @@ Total build time budget: **~2 weeks of focused work**, ideally absorbed into Mon
 
 ## 9. GitHub Workflow
 
-- Repo structure: `roadmap-copilot/` with `/backend`, `/frontend`, `/data` (Striver JSON, config), `/docs` (this spec + architecture diagram)
+- Repo structure: `preppilot/` with `/backend`, `/frontend`, `/data` (Striver JSON, config), `/docs` (this spec + architecture diagram)
 - Commit as you build each phase — real incremental history is part of the point (this is portfolio evidence of consistent work, which recruiters do look at)
 - `README.md` at repo root: what it does, architecture diagram, setup
   instructions. A dashboard screenshot is deliberately deferred — the UI is

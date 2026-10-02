@@ -11,10 +11,10 @@ const MS_PER_DAY = 24 * 60 * 60 * 1000;
  * Track labels are applied at issue-creation time (see setupJiraProject.js
  * and generateDailyTodos.js) and are exactly the track names from
  * roadmap.config.json (DSA, Fundamentals, CloudCert, Project, OpenSource,
- * SystemDesign, InterviewPrep). 'daily-todo' and 'roadmap-copilot' are
+ * SystemDesign, InterviewPrep). 'daily-todo' and 'preppilot' are
  * bookkeeping labels, not tracks, so they're filtered out here.
  */
-const NON_TRACK_LABELS = new Set(['daily-todo', 'roadmap-copilot']);
+const NON_TRACK_LABELS = new Set(['daily-todo', 'preppilot']);
 
 function trackFromLabels(labels = []) {
   return labels.find((l) => !NON_TRACK_LABELS.has(l)) ?? null;

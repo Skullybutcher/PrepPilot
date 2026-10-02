@@ -18,7 +18,7 @@ async function main() {
     const epic = await createIssue({
       summary: `${quarter.id}: ${quarter.name}`,
       issueType: "10005", // Epic
-      labels: ['roadmap-copilot'],
+      labels: ['preppilot'],
       description: `Weeks ${quarter.startWeek}-${quarter.endWeek}. Tracks: ${trackList}`,
     });
     console.log(`  Created ${epic.key} — ${quarter.id}: ${quarter.name}`);
@@ -31,7 +31,7 @@ async function main() {
         summary: `${trackName} — ${quarter.id}`,
         issueType: "10040", // Story
         parentKey: epic.key,
-        labels: [trackName, 'roadmap-copilot'],
+        labels: [trackName, 'preppilot'],
         description: `${trackConfig.focus} (~${trackConfig.weeklyHours} hrs/week)`,
       });
       console.log(`    Created ${story.key} — ${trackName} story`);

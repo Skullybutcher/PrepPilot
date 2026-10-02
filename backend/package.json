@@ -1,5 +1,5 @@
 {
-  "name": "roadmap-copilot-backend",
+  "name": "preppilot-backend",
   "version": "0.1.0",
   "description": "Daily todo generator + Jira sync for placement prep roadmap",
   "type": "module",

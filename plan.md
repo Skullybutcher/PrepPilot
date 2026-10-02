@@ -1,4 +1,4 @@
-# RoadMap Copilot — Implementation Plan
+# PrepPilot — Implementation Plan
 
 > **Created**: 2026-10-02  
 > **Estimated total**: ~3h 45min of focused work  
