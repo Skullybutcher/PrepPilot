@@ -199,3 +199,43 @@ Browse [reactbits.dev](https://reactbits.dev) and consider integrating:
 - The glassmorphism blur must not reduce text contrast below thresholds — always pair blur with a sufficiently opaque fallback background.
 - All images/icons need `alt` text. All icon-only buttons need `aria-label`.
 - Keyboard navigation must work for all flows (tab order, enter to submit, escape to close modals).
+
+## Phase 6: Multi-tenant Auth & AI Planner Enhancements
+
+### 6.1 Multi-tenant Auth & Jira Configuration (Powered by Supabase)
+**Rationale:** Currently, the system relies on hardcoded `.env` variables for a single user's Jira/NIM configuration. We need to support multiple users who can bring their own Jira accounts and API keys. We will use **Supabase** to handle Authentication and PostgreSQL Database storage.
+
+**Frontend (Supabase Auth):**
+- **Auth Layer:** Integrate `@supabase/supabase-js`. Create a unified Login/Signup page.
+- **Settings/Onboarding Modal:** After signup, prompt the user for their Jira details (`JIRA_BASE_URL`, `JIRA_EMAIL`, `JIRA_API_TOKEN`, `JIRA_PROJECT_KEY`).
+- **Help Text:** Provide clear, inline instructions (with screenshots or list items) showing users exactly where to find these keys in Jira (e.g., Atlassian Account -> Security -> Create API Token).
+- **Storage:** Send these details to the backend to be encrypted and upserted into the Supabase `profiles` table. **Never store API keys in plaintext.**
+
+**Backend (Supabase DB & Encryption):**
+- **Database (Supabase PostgreSQL):** Create a `profiles` table (`id` linked to `auth.users`, `jira_base_url`, `jira_email`, `encrypted_jira_token`, `jira_project_key`). Set up Row-Level Security (RLS) so users can only read/update their own config.
+- **Application-Level Encryption:** Implement an encryption utility in Node.js (using `crypto` and a master `ENCRYPTION_KEY` env var) to encrypt the Jira token *before* sending it to Supabase, and decrypt it when reading it back for use.
+- **Middleware:** Create a Supabase auth middleware using `@supabase/supabase-js` that verifies the incoming user's JWT from the request header.
+- **Dynamic Config:** Update all Jira API wrappers to fetch and decrypt the authenticated user's credentials dynamically from the Supabase DB on each request, rather than `process.env`.
+
+### 6.2 Fix API Deployment / Connectivity Errors
+**Symptoms:** Users see "failed to load errors" and `Error: Unexpected token '<', "<!DOCTYPE "... is not valid JSON` in the chat.
+**Cause:** The frontend `VITE_API_URL` environment variable is either unset or misconfigured on Vercel. When unset, `fetch` falls back to requesting relative paths (`/undefined/api/...`), which Vercel's SPA routing intercepts and serves `index.html` (hence the HTML parse error).
+**Fixes:**
+1. **Frontend:** Update `frontend/src/api.js` to handle missing backend URLs more gracefully (e.g., throwing a clear "Backend URL missing" error).
+2. **Frontend Config:** Ensure Vite proxy is set in `vite.config.js` for local development (`/api` -> `http://localhost:4000`).
+3. **Vercel Env:** The user must configure `VITE_API_URL` to point to the live Render backend URL (`https://<render-app>.onrender.com/api`).
+
+### 6.3 AI Planner Context Modal
+**Rationale:** The AI planner currently starts a chat cold. We need a way for the user to provide upfront context so the planner can generate a comprehensive roadmap immediately.
+
+**Frontend:**
+- **Plan Setup Modal:** When a user clicks "Create Plan" or opens the `/plan/new` view, show a modal before the chat interface appears.
+- **Form Fields:** 
+  - **Goal/Purpose:** What are you preparing for? (e.g., "SDE-1 at Amazon")
+  - **Duration:** How many months/weeks?
+  - **Course Materials/Links:** What courses or platforms are you using?
+  - **Current Level:** Beginner / Intermediate / Advanced
+- **Action:** On submit, structure this data into a formatted system message and send it as the *first* hidden user prompt to the `/api/plan/chat` backend, kickstarting the generation process.
+
+**Backend:**
+- Update `/api/plan/chat` to parse this initial context message and inject it into the LLM system prompt for highly tailored roadmap generation.

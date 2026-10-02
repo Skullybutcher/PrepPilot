@@ -53,3 +53,25 @@
 {"timestamp":"2026-10-02T12:43:00.772Z","attemptedModel":"nvidia/nemotron-3.5-lightning-30b-a3b","error":"Expected 1-2 options, got 0","raw":"{\"options\":[]}"}
 {"timestamp":"2026-10-02T12:43:01.274Z","attemptedModel":"nvidia/nemotron-3.5-lightning-30b-a3b","error":"Expected 1-2 options, got 0","raw":"{\"options\":[]}"}
 {"timestamp":"2026-10-02T12:43:01.275Z","attemptedModel":"deepseek-ai/deepseek-v4.1-flash","error":"Expected 1-2 options, got 0","raw":"{\"options\":[]}"}
+{"timestamp":"2026-10-02T17:12:47.220Z","attemptedModel":"nvidia/nemotron-3.5-lightning-30b-a3b","error":"NIM returned invalid JSON. Raw response:\nnot json","raw":"not json"}
+{"timestamp":"2026-10-02T17:12:47.224Z","attemptedModel":"deepseek-ai/deepseek-v4.1-flash","error":"NIM returned invalid JSON. Raw response:\nnot json","raw":"not json"}
+{"timestamp":"2026-10-02T17:12:47.227Z","attemptedModel":"nvidia/nemotron-3.5-lightning-30b-a3b","error":"Expected 1-2 options, got 0","raw":"{\"options\":[]}"}
+{"timestamp":"2026-10-02T17:12:47.228Z","attemptedModel":"deepseek-ai/deepseek-v4.1-flash","error":"Expected 1-2 options, got 0","raw":"{\"options\":[]}"}
+{"timestamp":"2026-10-02T17:12:47.231Z","attemptedModel":"nvidia/nemotron-3.5-lightning-30b-a3b","error":"Expected 1-2 options, got 3","raw":"{\"options\":[{\"track\":\"DSA\",\"change\":\"a\",\"rationale\":\"r\"},{\"track\":\"DSA\",\"change\":\"b\",\"rationale\":\"r\"},{\"track\":\"DSA\",\"change\":\"c\",\"rationale\":\"r\"}]}"}
+{"timestamp":"2026-10-02T17:12:47.232Z","attemptedModel":"deepseek-ai/deepseek-v4.1-flash","error":"Expected 1-2 options, got 3","raw":"{\"options\":[{\"track\":\"DSA\",\"change\":\"a\",\"rationale\":\"r\"},{\"track\":\"DSA\",\"change\":\"b\",\"rationale\":\"r\"},{\"track\":\"DSA\",\"change\":\"c\",\"rationale\":\"r\"}]}"}
+{"timestamp":"2026-10-02T17:12:47.234Z","attemptedModel":"nvidia/nemotron-3.5-lightning-30b-a3b","error":"Malformed option: {\"track\":\"DSA\",\"change\":\"a\"}","raw":"{\"options\":[{\"track\":\"DSA\",\"change\":\"a\"}]}"}
+{"timestamp":"2026-10-02T17:12:47.235Z","attemptedModel":"deepseek-ai/deepseek-v4.1-flash","error":"Malformed option: {\"track\":\"DSA\",\"change\":\"a\"}","raw":"{\"options\":[{\"track\":\"DSA\",\"change\":\"a\"}]}"}
+{"timestamp":"2026-10-02T17:12:47.240Z","attemptedModel":"nvidia/nemotron-3.5-lightning-30b-a3b","error":"Expected 1-2 options, got 0","raw":"{\"options\":[]}"}
+{"timestamp":"2026-10-02T17:12:47.747Z","attemptedModel":"nvidia/nemotron-3.5-lightning-30b-a3b","error":"Expected 1-2 options, got 0","raw":"{\"options\":[]}"}
+{"timestamp":"2026-10-02T17:12:47.749Z","attemptedModel":"deepseek-ai/deepseek-v4.1-flash","error":"Expected 1-2 options, got 0","raw":"{\"options\":[]}"}
+{"timestamp":"2026-10-02T17:25:35.612Z","attemptedModel":"nvidia/nemotron-3.5-lightning-30b-a3b","error":"NIM returned invalid JSON. Raw response:\nnot json","raw":"not json"}
+{"timestamp":"2026-10-02T17:25:35.614Z","attemptedModel":"deepseek-ai/deepseek-v4.1-flash","error":"NIM returned invalid JSON. Raw response:\nnot json","raw":"not json"}
+{"timestamp":"2026-10-02T17:25:35.615Z","attemptedModel":"nvidia/nemotron-3.5-lightning-30b-a3b","error":"Expected 1-2 options, got 0","raw":"{\"options\":[]}"}
+{"timestamp":"2026-10-02T17:25:35.616Z","attemptedModel":"deepseek-ai/deepseek-v4.1-flash","error":"Expected 1-2 options, got 0","raw":"{\"options\":[]}"}
+{"timestamp":"2026-10-02T17:25:35.616Z","attemptedModel":"nvidia/nemotron-3.5-lightning-30b-a3b","error":"Expected 1-2 options, got 3","raw":"{\"options\":[{\"track\":\"DSA\",\"change\":\"a\",\"rationale\":\"r\"},{\"track\":\"DSA\",\"change\":\"b\",\"rationale\":\"r\"},{\"track\":\"DSA\",\"change\":\"c\",\"rationale\":\"r\"}]}"}
+{"timestamp":"2026-10-02T17:25:35.617Z","attemptedModel":"deepseek-ai/deepseek-v4.1-flash","error":"Expected 1-2 options, got 3","raw":"{\"options\":[{\"track\":\"DSA\",\"change\":\"a\",\"rationale\":\"r\"},{\"track\":\"DSA\",\"change\":\"b\",\"rationale\":\"r\"},{\"track\":\"DSA\",\"change\":\"c\",\"rationale\":\"r\"}]}"}
+{"timestamp":"2026-10-02T17:25:35.617Z","attemptedModel":"nvidia/nemotron-3.5-lightning-30b-a3b","error":"Malformed option: {\"track\":\"DSA\",\"change\":\"a\"}","raw":"{\"options\":[{\"track\":\"DSA\",\"change\":\"a\"}]}"}
+{"timestamp":"2026-10-02T17:25:35.618Z","attemptedModel":"deepseek-ai/deepseek-v4.1-flash","error":"Malformed option: {\"track\":\"DSA\",\"change\":\"a\"}","raw":"{\"options\":[{\"track\":\"DSA\",\"change\":\"a\"}]}"}
+{"timestamp":"2026-10-02T17:25:35.620Z","attemptedModel":"nvidia/nemotron-3.5-lightning-30b-a3b","error":"Expected 1-2 options, got 0","raw":"{\"options\":[]}"}
+{"timestamp":"2026-10-02T17:25:36.132Z","attemptedModel":"nvidia/nemotron-3.5-lightning-30b-a3b","error":"Expected 1-2 options, got 0","raw":"{\"options\":[]}"}
+{"timestamp":"2026-10-02T17:25:36.133Z","attemptedModel":"deepseek-ai/deepseek-v4.1-flash","error":"Expected 1-2 options, got 0","raw":"{\"options\":[]}"}

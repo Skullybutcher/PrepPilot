@@ -48,7 +48,16 @@ router.post('/chat', async (req, res) => {
     return res.status(500).json({ error: `Failed to load context files: ${err.message}` });
   }
 
-  const systemPrompt = `You are a placement-prep roadmap assistant. Your job is to help the user create or revise their structured roadmap config.
+  // Detect whether the first user message is a structured context dump from the
+  // PlanSetupModal (starts with "Goal:"). If so, extract it and embed it into
+  // the system prompt so the model has the full context in its instructions.
+  const firstUser = messages[0];
+  let initialContextBlock = '';
+  if (firstUser?.role === 'user' && /^Goal:/m.test(firstUser.content)) {
+    initialContextBlock = `\n\nUser's preparation context (from onboarding form):\n${firstUser.content}`;
+  }
+
+  const systemPrompt = `You are a placement-prep roadmap assistant. Your job is to help the user create or revise their structured roadmap config.${initialContextBlock}
 
 Current roadmap config (JSON):
 \`\`\`json

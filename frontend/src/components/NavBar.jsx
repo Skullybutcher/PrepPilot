@@ -1,11 +1,38 @@
+import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import Logo from './Logo';
+import { useAuth } from '../context/AuthContext';
 
 export default function NavBar({ breadcrumb }) {
   const location = useLocation();
   const navigate = useNavigate();
+  const { user, signOut } = useAuth();
   const isLanding = location.pathname === '/';
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handler = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [menuOpen]);
+
+  const handleSignOut = async () => {
+    setMenuOpen(false);
+    await signOut();
+    navigate('/');
+  };
+
+  // First letter of email for avatar
+  const avatarLetter = user?.email?.[0]?.toUpperCase() ?? '?';
 
   return (
     <header className="navbar">
@@ -24,7 +51,8 @@ export default function NavBar({ breadcrumb }) {
         </div>
 
         <div className="navbar-right">
-          {!isLanding && (
+          {/* Unauthenticated — on landing show CTA, elsewhere show Dashboard link */}
+          {!user && !isLanding && (
             <button
               className="nav-dashboard-btn"
               onClick={() => navigate('/dashboard')}
@@ -33,15 +61,48 @@ export default function NavBar({ breadcrumb }) {
               Dashboard
             </button>
           )}
-          {isLanding && (
+          {!user && isLanding && (
             <button
               className="cta-primary cta-sm"
-              onClick={() => navigate('/dashboard')}
-              aria-label="Open app"
+              onClick={() => navigate('/login')}
+              aria-label="Sign in to PrepPilot"
             >
-              Open App
+              Sign in
             </button>
           )}
+
+          {/* Authenticated — user menu */}
+          {user && (
+            <div className="nav-user-menu" ref={menuRef}>
+              <button
+                className="nav-user-btn"
+                onClick={() => setMenuOpen((v) => !v)}
+                aria-expanded={menuOpen}
+                aria-haspopup="true"
+                aria-label="User menu"
+              >
+                <div className="nav-user-avatar" aria-hidden="true">
+                  {avatarLetter}
+                </div>
+                <span className="nav-user-email">{user.email}</span>
+                <span aria-hidden="true" style={{ fontSize: 10, marginLeft: 2, opacity: 0.6 }}>▾</span>
+              </button>
+
+              {menuOpen && (
+                <div className="nav-user-dropdown" role="menu">
+                  <div className="nav-user-dropdown-email">{user.email}</div>
+                  <button
+                    className="nav-signout-btn"
+                    onClick={handleSignOut}
+                    role="menuitem"
+                  >
+                    Sign out
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+
           <ThemeToggle />
         </div>
       </div>
@@ -132,6 +193,7 @@ export default function NavBar({ breadcrumb }) {
           .navbar-breadcrumb { display: none; }
           .nav-dashboard-btn { display: none; }
           .navbar-inner { padding: 0 16px; }
+          .nav-user-email { display: none; }
         }
       `}</style>
     </header>
